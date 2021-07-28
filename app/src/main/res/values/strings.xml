@@ -7,11 +7,7 @@
     <string name="movies">Movies</string>
     <string name="tv_shows">TV Show</string>
     <string name="overview">Overview</string>
-    <string name="release_date">Release: %s</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-    <string name="last_seen">Terakhir dilihat</string>
-
-    <string name="share_text">Share the %s films </string>
     <string name="text_date">Release Date</string>
+    <string name="release_date">Release: %s</string>
+    <string name="share_text">Share the %s films </string>
 </resources>

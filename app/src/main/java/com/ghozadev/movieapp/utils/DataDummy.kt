@@ -74,61 +74,61 @@ object DataDummy {
 
         films.add(FilmEntity(
             "Cobra Kai",
-            "",
+            "2 May 2018",
             "This Karate Kid sequel series picks up 30 years after the events of the 1984 All Valley Karate Tournament and finds Johnny Lawrence on the hunt for redemption by reopening the infamous Cobra Kai karate dojo. This reignites his old rivalry with the successful Daniel LaRusso, who has been working to maintain the balance in his life without mentor Mr. Miyagi.",
             R.drawable.poster_cobra_kai
         ))
         films.add(FilmEntity(
             "Game of Thrones",
-            "",
+            "17 April 2011",
             "Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond.",
             R.drawable.poster_got
         ))
         films.add(FilmEntity(
             "Legacies",
-            "",
+            "25 October 2018",
             "In a place where young witches, vampires, and werewolves are nurtured to be their best selves in spite of their worst impulses, Klaus Mikaelson’s daughter, 17-year-old Hope Mikaelson, Alaric Saltzman’s twins, Lizzie and Josie Saltzman, among others, come of age into heroes and villains at The Salvatore School for the Young and Gifted.",
             R.drawable.poster_legacies
         ))
         films.add(FilmEntity(
             "Lucifer",
-            "",
+            "25 January 2016",
             "Bored and unhappy as the Lord of Hell, Lucifer Morningstar abandoned his throne and retired to Los Angeles, where he has teamed up with LAPD detective Chloe Decker to take down criminals. But the longer he's away from the underworld, the greater the threat that the worst of humanity could escape.",
             R.drawable.poster_lucifer
         ))
         films.add(FilmEntity(
             "Money Heist",
-            "",
+            "2 May 2017",
             "To carry out the biggest heist in history, a mysterious man called The Professor recruits a band of eight robbers who have a single characteristic: none of them has anything to lose. Five months of seclusion - memorizing every step, every detail, every probability - culminate in eleven days locked up in the National Coinage and Stamp Factory of Spain, surrounded by police forces and with dozens of hostages in their power, to find out whether their suicide wager will lead to everything or nothing.",
             R.drawable.poster_money_heist
         ))
         films.add(FilmEntity(
             "Riverdale",
-            "",
+            "26 January 2017",
             "Set in the present, the series offers a bold, subversive take on Archie, Betty, Veronica and their friends, exploring the surreality of small-town life, the darkness and weirdness bubbling beneath Riverdale’s wholesome facade.",
             R.drawable.poster_riverdale
         ))
         films.add(FilmEntity(
             "The Boys",
-            "",
+            "25 July 2019",
             "A group of vigilantes known informally as “The Boys” set out to take down corrupt superheroes with no more than blue-collar grit and a willingness to fight dirty.",
             R.drawable.poster_the_boys
         ))
         films.add(FilmEntity(
             "The Good Doctor",
-            "",
+            "25 September 2017",
             "A young surgeon with Savant syndrome is recruited into the surgical unit of a prestigious hospital. The question will arise: can a person who doesn't have the ability to relate to people actually save their lives",
             R.drawable.poster_good_doctor
         ))
         films.add(FilmEntity(
             "The Mandalorian",
-            "",
+            "12 November 2019",
             "After the fall of the Galactic Empire, lawlessness has spread throughout the galaxy. A lone gunfighter makes his way through the outer reaches, earning his keep as a bounty hunter.",
             R.drawable.poster_mandalorian
         ))
         films.add(FilmEntity(
             "Vikings",
-            "",
+            "3 March 2013",
             "The adventures of Ragnar Lothbrok, the greatest hero of his age. The series tells the sagas of Ragnar's band of Viking brothers and his family, as he rises to become King of the Viking tribes. As well as being a fearless warrior, Ragnar embodies the Norse traditions of devotion to the gods. Legend has it that he was a direct descendant of Odin, the god of war and warriors.",
             R.drawable.poster_vikings
         ))

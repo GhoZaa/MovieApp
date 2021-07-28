@@ -9,13 +9,13 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.ghozadev.movieapp.R
 import com.ghozadev.movieapp.utils.DataDummy
-import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
 
 
 class HomeActivityTest {
-    private val dummyFilm = DataDummy.generateDummyMovies()
+    private val dummyMovie = DataDummy.generateDummyMovies()
+    private val dummyTvShow = DataDummy.generateDummyTvShows()
 
     @get:Rule
     var activityRule = ActivityScenarioRule(HomeActivity::class.java)
@@ -23,18 +23,37 @@ class HomeActivityTest {
     @Test
     fun loadFilms() {
         onView(withId(R.id.rv_movie)).check(matches(isDisplayed()))
-        onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(dummyFilm.size))
+        onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(dummyMovie.size))
     }
 
     @Test
-    fun loadDetailFilm() {
+    fun loadDetailMovie() {
         onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
         onView(withId(R.id.text_title)).check(matches(isDisplayed()))
-        onView(withId(R.id.text_title)).check(matches(withText(dummyFilm[0].title)))
+        onView(withId(R.id.text_title)).check(matches(withText(dummyMovie[0].title)))
         onView(withId(R.id.text_release_date)).check(matches(isDisplayed()))
-        onView(withId(R.id.text_release_date)).check(matches(withText(dummyFilm[0].releaseDate)))
+        onView(withId(R.id.text_release_date)).check(matches(withText(dummyMovie[0].releaseDate)))
         onView(withId(R.id.text_description)).check(matches(isDisplayed()))
-        onView(withId(R.id.text_description)).check(matches(withText(dummyFilm[0].description)))
+        onView(withId(R.id.text_description)).check(matches(withText(dummyMovie[0].description)))
+    }
+
+    @Test
+    fun loadTvShows() {
+        onView(withText("TV SHOW")).perform(click())
+        onView(withId(R.id.rv_tv_show)).check(matches(isDisplayed()))
+        onView(withId(R.id.rv_tv_show)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(dummyTvShow.size))
+    }
+
+    @Test
+    fun loadDetailTvShow() {
+        onView(withText("TV SHOW")).perform(click())
+        onView(withId(R.id.rv_tv_show)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+        onView(withId(R.id.text_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.text_title)).check(matches(withText(dummyTvShow[0].title)))
+        onView(withId(R.id.text_release_date)).check(matches(isDisplayed()))
+        onView(withId(R.id.text_release_date)).check(matches(withText(dummyTvShow[0].releaseDate)))
+        onView(withId(R.id.text_description)).check(matches(isDisplayed()))
+        onView(withId(R.id.text_description)).check(matches(withText(dummyTvShow[0].description)))
     }
 
 }

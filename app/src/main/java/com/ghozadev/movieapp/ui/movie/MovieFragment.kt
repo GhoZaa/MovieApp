@@ -1,22 +1,19 @@
 package com.ghozadev.movieapp.ui.movie
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ShareCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ghozadev.movieapp.R
 import com.ghozadev.movieapp.data.FilmEntity
 import com.ghozadev.movieapp.databinding.FragmentMovieBinding
-import com.ghozadev.movieapp.utils.DataDummy
 
 /**
  * A simple [Fragment] subclass.
- * Use the [MovieFragment.newInstance] factory method to
- * create an instance of this fragment.
  */
 class MovieFragment : Fragment(), FilmFragmentCallback {
     private lateinit var fragmentMovieBinding: FragmentMovieBinding

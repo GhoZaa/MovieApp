@@ -1,11 +1,11 @@
 package com.ghozadev.movieapp.ui.tvshow
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ShareCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ghozadev.movieapp.R
@@ -13,12 +13,9 @@ import com.ghozadev.movieapp.data.FilmEntity
 import com.ghozadev.movieapp.databinding.FragmentTvShowBinding
 import com.ghozadev.movieapp.ui.movie.FilmAdapter
 import com.ghozadev.movieapp.ui.movie.FilmFragmentCallback
-import com.ghozadev.movieapp.utils.DataDummy
 
 /**
  * A simple [Fragment] subclass.
- * Use the [TvShowFragment.newInstance] factory method to
- * create an instance of this fragment.
  */
 class TvShowFragment : Fragment(), FilmFragmentCallback {
     private lateinit var fragmentTvShowBinding: FragmentTvShowBinding
@@ -26,7 +23,7 @@ class TvShowFragment : Fragment(), FilmFragmentCallback {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         fragmentTvShowBinding = FragmentTvShowBinding.inflate(layoutInflater, container, false)
         return fragmentTvShowBinding.root
     }
