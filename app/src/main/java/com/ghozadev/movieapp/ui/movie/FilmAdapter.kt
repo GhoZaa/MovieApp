@@ -10,6 +10,8 @@ import com.ghozadev.movieapp.R
 import com.ghozadev.movieapp.data.FilmEntity
 import com.ghozadev.movieapp.databinding.ItemsFilmBinding
 import com.ghozadev.movieapp.ui.detail.DetailFilmActivity
+import com.ghozadev.movieapp.ui.detail.DetailFilmActivity.Companion.TYPE_MOVIE
+import com.ghozadev.movieapp.ui.detail.DetailFilmActivity.Companion.TYPE_TV_SHOW
 
 class FilmAdapter(private val callback: FilmFragmentCallback) : RecyclerView.Adapter<FilmAdapter.FilmViewHolder>(){
     private var listFilms = ArrayList<FilmEntity>()
@@ -39,12 +41,16 @@ class FilmAdapter(private val callback: FilmFragmentCallback) : RecyclerView.Ada
                 tvItemDate.text = itemView.resources.getString(R.string.release_date, film.releaseDate)
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailFilmActivity::class.java)
-                    intent.putExtra(DetailFilmActivity.EXTRA_FILM, film.title)
+                    intent.putExtra(DetailFilmActivity.EXTRA_FILM, film.id)
+                    if (film.type == "MOVIE")
+                        intent.putExtra(DetailFilmActivity.EXTRA_TYPE, TYPE_MOVIE)
+                    else if (film.type == "TV_SHOW")
+                        intent.putExtra(DetailFilmActivity.EXTRA_TYPE, TYPE_TV_SHOW)
                     itemView.context.startActivity(intent)
                 }
                 imgShare.setOnClickListener { callback.onShareClick(film) }
                 Glide.with(itemView.context)
-                        .load(film.posterPath)
+                        .load("https://image.tmdb.org/t/p/w185/" + film.posterPath)
                         .apply(RequestOptions.placeholderOf(R.drawable.ic_loading)
                                 .error(R.drawable.ic_error))
                         .into(imgPoster)

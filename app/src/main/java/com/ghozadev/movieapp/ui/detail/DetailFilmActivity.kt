@@ -18,6 +18,8 @@ class DetailFilmActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_FILM = "extra_film"
         const val EXTRA_TYPE = "extra_type"
+        const val TYPE_MOVIE = "TYPE_MOVIE"
+        const val TYPE_TV_SHOW = "TYPE_TV_SHOW"
     }
 
     private lateinit var detailContentBinding: ContentDetailFilmBinding
@@ -37,14 +39,21 @@ class DetailFilmActivity : AppCompatActivity() {
         val viewModel = ViewModelProvider(this, factory)[DetailFilmViewModel::class.java]
 
         val extras = intent.extras
-        val type = intent.getStringExtra(EXTRA_TYPE)
+
+        activityDetailFilmBinding.progressBar.visibility = View.VISIBLE
         if (extras != null) {
             val filmId = extras.getInt(EXTRA_FILM)
-            activityDetailFilmBinding.progressBar.visibility = View.GONE
-            activityDetailFilmBinding.content.visibility = View.INVISIBLE
+            val type = extras.getString(EXTRA_TYPE)
 
-            viewModel.setSelectedFilm(filmId)
-            viewModel.getMovie().observe(this, { film -> populateFilm(film) })
+            if (type.equals(TYPE_MOVIE, ignoreCase = true)) {
+                activityDetailFilmBinding.progressBar.visibility = View.GONE
+                viewModel.setSelectedFilm(filmId)
+                viewModel.getMovie().observe(this, { film -> populateFilm(film) })
+            } else if (type.equals(TYPE_TV_SHOW, ignoreCase = true)) {
+                activityDetailFilmBinding.progressBar.visibility = View.GONE
+                viewModel.setSelectedFilm(filmId)
+                viewModel.getTvShow().observe(this, { film -> populateFilm(film) })
+            }
         }
     }
 
@@ -54,13 +63,12 @@ class DetailFilmActivity : AppCompatActivity() {
         detailContentBinding.textReleaseDate.text = filmEntity.releaseDate
 
         Glide.with(this)
-            .load(filmEntity.posterPath)
+            .load("https://image.tmdb.org/t/p/w185/"  + filmEntity.posterPath)
             .transform(RoundedCorners(20))
             .apply(
                 RequestOptions.placeholderOf(R.drawable.ic_loading)
                 .error(R.drawable.ic_error))
             .into(detailContentBinding.imagePoster)
-
     }
 
 }

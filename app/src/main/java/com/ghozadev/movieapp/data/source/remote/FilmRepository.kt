@@ -36,7 +36,8 @@ class FilmRepository private constructor(private val remoteDataSource: RemoteDat
                             response.backdropPath,
                             response.posterPath,
                             response.releaseDate,
-                            response.description
+                            response.description,
+                            "MOVIE"
                         )
                         movieList.add(movie)
                     }
@@ -59,7 +60,8 @@ class FilmRepository private constructor(private val remoteDataSource: RemoteDat
                         movieResponse.backdropPath,
                         movieResponse.posterPath,
                         movieResponse.releaseDate,
-                        movieResponse.description
+                        movieResponse.description,
+                        "MOVIE"
                     )
                     movieResult.postValue(movie)
                 }
@@ -81,7 +83,8 @@ class FilmRepository private constructor(private val remoteDataSource: RemoteDat
                             response.backdropPath,
                             response.posterPath,
                             response.releaseDate,
-                            response.description
+                            response.description,
+                            "TV_SHOW"
                         )
                         tvShowList.add(tvShow)
                     }
@@ -103,7 +106,8 @@ class FilmRepository private constructor(private val remoteDataSource: RemoteDat
                         tvShowResponse.backdropPath,
                         tvShowResponse.posterPath,
                         tvShowResponse.releaseDate,
-                        tvShowResponse.description
+                        tvShowResponse.description,
+                        "TV_SHOW"
                     )
                     tvShowResult.postValue(tvShow)
                 }
