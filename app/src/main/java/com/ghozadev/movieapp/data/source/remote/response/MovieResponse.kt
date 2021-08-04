@@ -20,5 +20,5 @@ data class MovieResponse(
 	val releaseDate: String,
 
 	@field:SerializedName("overview")
-	val overview: String
+	val description: String
 )

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ghozadev.movieapp.R
 import com.ghozadev.movieapp.data.FilmEntity
 import com.ghozadev.movieapp.databinding.FragmentMovieBinding
+import com.ghozadev.movieapp.viewmodel.ViewModelFactory
 
 /**
  * A simple [Fragment] subclass.
@@ -30,11 +31,17 @@ class MovieFragment : Fragment(), FilmFragmentCallback {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-            val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[MovieViewModel::class.java]
-            val films = viewModel.getMovies()
+            val factory = ViewModelFactory.getInstance(requireActivity())
+            val viewModel = ViewModelProvider(this, factory)[MovieViewModel::class.java]
 
             val filmAdapter = FilmAdapter(this)
-            filmAdapter.setFilms(films)
+
+            fragmentMovieBinding.progressBar.visibility = View.VISIBLE
+            viewModel.getMovies().observe(this, { movies ->
+                fragmentMovieBinding.progressBar.visibility = View.GONE
+                filmAdapter.setFilms(movies)
+                filmAdapter.notifyDataSetChanged()
+            })
 
             with(fragmentMovieBinding.rvMovie) {
                 layoutManager = LinearLayoutManager(context)

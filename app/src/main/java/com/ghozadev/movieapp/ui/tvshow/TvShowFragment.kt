@@ -13,6 +13,7 @@ import com.ghozadev.movieapp.data.FilmEntity
 import com.ghozadev.movieapp.databinding.FragmentTvShowBinding
 import com.ghozadev.movieapp.ui.movie.FilmAdapter
 import com.ghozadev.movieapp.ui.movie.FilmFragmentCallback
+import com.ghozadev.movieapp.viewmodel.ViewModelFactory
 
 /**
  * A simple [Fragment] subclass.
@@ -32,11 +33,17 @@ class TvShowFragment : Fragment(), FilmFragmentCallback {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-            val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[TvShowViewModel::class.java]
-            val films = viewModel.getTvShow()
+            val factory = ViewModelFactory.getInstance(requireActivity())
+            val viewModel = ViewModelProvider(this, factory)[TvShowViewModel::class.java]
 
             val filmAdapter = FilmAdapter(this)
-            filmAdapter.setFilms(films)
+
+            fragmentTvShowBinding.progressBar.visibility = View.VISIBLE
+            viewModel.getTvShow().observe(this, { tvShows ->
+                fragmentTvShowBinding.progressBar.visibility = View.GONE
+                filmAdapter.setFilms(tvShows)
+                filmAdapter.notifyDataSetChanged()
+            })
 
             with(fragmentTvShowBinding.rvTvShow) {
                 layoutManager = LinearLayoutManager(context)

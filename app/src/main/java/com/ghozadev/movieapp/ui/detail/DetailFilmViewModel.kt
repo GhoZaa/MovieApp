@@ -1,31 +1,19 @@
 package com.ghozadev.movieapp.ui.detail
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.ghozadev.movieapp.data.FilmEntity
-import com.ghozadev.movieapp.utils.DataDummy
+import com.ghozadev.movieapp.data.source.remote.FilmRepository
 
-class DetailFilmViewModel : ViewModel() {
+class DetailFilmViewModel(private val filmRepository: FilmRepository) : ViewModel() {
 
-    private lateinit var filmTitle: String
+    private var filmId: Int = 0
 
-    fun setSelectedFilm(filmTitle: String) {
-        this.filmTitle = filmTitle
+    fun setSelectedFilm(filmId: Int) {
+        this.filmId = filmId
     }
 
-    fun getFilm(): FilmEntity? {
-        var film: FilmEntity? = null
-        for (movieEntity in DataDummy.generateDummyMovies()) {
-            if (movieEntity.title == filmTitle) {
-                film = movieEntity
-            }
-        }
+    fun getMovie(): LiveData<FilmEntity> = filmRepository.getMovieDetail(filmId)
 
-        for (tvShowEntity in DataDummy.generateDummyTvShows()) {
-            if (tvShowEntity.title == filmTitle) {
-                film = tvShowEntity
-            }
-        }
-
-        return film
-    }
+    fun getTvShow(): LiveData<FilmEntity> = filmRepository.getTvShowDetail(filmId)
 }

@@ -44,7 +44,7 @@ class FilmAdapter(private val callback: FilmFragmentCallback) : RecyclerView.Ada
                 }
                 imgShare.setOnClickListener { callback.onShareClick(film) }
                 Glide.with(itemView.context)
-                        .load(film.imagePath)
+                        .load(film.posterPath)
                         .apply(RequestOptions.placeholderOf(R.drawable.ic_loading)
                                 .error(R.drawable.ic_error))
                         .into(imgPoster)
