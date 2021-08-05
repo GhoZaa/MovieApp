@@ -1,10 +1,12 @@
 package com.ghozadev.movieapp.ui.detail
 
+import com.ghozadev.movieapp.data.FilmRepository
 import com.ghozadev.movieapp.utils.DataDummy
 import org.junit.Test
 
 import org.junit.Assert.*
 import org.junit.Before
+import org.mockito.Mock
 
 class DetailFilmViewModelTest {
 
@@ -14,9 +16,12 @@ class DetailFilmViewModelTest {
     private val movieTitle = dummyMovie.title
     private val tvShowTitle = dummyTvShow.title
 
+    @Mock
+    private lateinit var filmRepository: FilmRepository
+
     @Before
     fun setUp() {
-        viewModel = DetailFilmViewModel()
+        viewModel = DetailFilmViewModel(filmRepository)
         viewModel.setSelectedFilm(movieTitle)
         viewModel.setSelectedFilm(tvShowTitle)
     }

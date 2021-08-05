@@ -33,7 +33,7 @@ class TvShowFragment : Fragment(), FilmFragmentCallback {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-            val factory = ViewModelFactory.getInstance(requireActivity())
+            val factory = ViewModelFactory.getInstance()
             val viewModel = ViewModelProvider(this, factory)[TvShowViewModel::class.java]
 
             val filmAdapter = FilmAdapter(this)

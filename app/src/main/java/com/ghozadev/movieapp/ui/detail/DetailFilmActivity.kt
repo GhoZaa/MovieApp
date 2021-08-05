@@ -35,7 +35,7 @@ class DetailFilmActivity : AppCompatActivity() {
         setSupportActionBar(activityDetailFilmBinding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val factory = ViewModelFactory.getInstance(this)
+        val factory = ViewModelFactory.getInstance()
         val viewModel = ViewModelProvider(this, factory)[DetailFilmViewModel::class.java]
 
         val extras = intent.extras
@@ -63,7 +63,7 @@ class DetailFilmActivity : AppCompatActivity() {
         detailContentBinding.textReleaseDate.text = filmEntity.releaseDate
 
         Glide.with(this)
-            .load("https://image.tmdb.org/t/p/w185/"  + filmEntity.posterPath)
+            .load("https://image.tmdb.org/t/p/w185/" + filmEntity.posterPath)
             .transform(RoundedCorners(20))
             .apply(
                 RequestOptions.placeholderOf(R.drawable.ic_loading)

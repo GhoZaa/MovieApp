@@ -1,16 +1,16 @@
-package com.ghozadev.movieapp.data.source.remote
+package com.ghozadev.movieapp.data
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.ghozadev.movieapp.data.FilmEntity
-import com.ghozadev.movieapp.data.source.FilmDataSource
+import com.ghozadev.movieapp.data.source.remote.RemoteDataSource
 import com.ghozadev.movieapp.data.source.remote.response.MovieResponse
 import com.ghozadev.movieapp.data.source.remote.response.TvShowResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
-class FilmRepository private constructor(private val remoteDataSource: RemoteDataSource) : FilmDataSource {
+class FilmRepository private constructor(private val remoteDataSource: RemoteDataSource) :
+    FilmDataSource {
 
     companion object {
         @Volatile
@@ -52,7 +52,8 @@ class FilmRepository private constructor(private val remoteDataSource: RemoteDat
         val movieResult = MutableLiveData<FilmEntity>()
 
         CoroutineScope(IO).launch {
-            remoteDataSource.getMovieDetail(movieId, object : RemoteDataSource.LoadMovieDetailCallback {
+            remoteDataSource.getMovieDetail(movieId, object :
+                RemoteDataSource.LoadMovieDetailCallback {
                 override fun onMovieDetailReceived(movieResponse: MovieResponse) {
                     val movie = FilmEntity(
                         movieResponse.id,
@@ -73,7 +74,8 @@ class FilmRepository private constructor(private val remoteDataSource: RemoteDat
     override fun getPopularTvShow(): LiveData<List<FilmEntity>> {
         val listTvShowResults = MutableLiveData<List<FilmEntity>>()
         CoroutineScope(IO).launch {
-            remoteDataSource.getPopularTvShows(object : RemoteDataSource.LoadPopularTvShowsCallback {
+            remoteDataSource.getPopularTvShows(object :
+                RemoteDataSource.LoadPopularTvShowsCallback {
                 override fun onAllTvShowReceived(tvShowResponse: List<TvShowResponse>) {
                     val tvShowList = ArrayList<FilmEntity>()
                     for (response in tvShowResponse) {
@@ -98,7 +100,8 @@ class FilmRepository private constructor(private val remoteDataSource: RemoteDat
     override fun getTvShowDetail(tvShowId: Int): LiveData<FilmEntity> {
         val tvShowResult = MutableLiveData<FilmEntity>()
         CoroutineScope(IO).launch {
-            remoteDataSource.getTvShowDetail(tvShowId, object : RemoteDataSource.LoadTvShowDetailCallback {
+            remoteDataSource.getTvShowDetail(tvShowId, object :
+                RemoteDataSource.LoadTvShowDetailCallback {
                 override fun onTvShowDetailReceived(tvShowResponse: TvShowResponse) {
                     val tvShow = FilmEntity(
                         tvShowResponse.id,

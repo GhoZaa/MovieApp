@@ -1,9 +1,8 @@
 package com.ghozadev.movieapp.viewmodel
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.ghozadev.movieapp.data.source.remote.FilmRepository
+import com.ghozadev.movieapp.data.FilmRepository
 import com.ghozadev.movieapp.di.Injection
 import com.ghozadev.movieapp.ui.detail.DetailFilmViewModel
 import com.ghozadev.movieapp.ui.movie.MovieViewModel
@@ -15,8 +14,8 @@ class ViewModelFactory private constructor(private val mFilmRepository: FilmRepo
         @Volatile
         private var instance: ViewModelFactory? = null
 
-        fun getInstance(context: Context): ViewModelFactory = instance ?: synchronized(this) {
-            instance ?: ViewModelFactory(Injection.provideFilmRepository(context)).apply {
+        fun getInstance(): ViewModelFactory = instance ?: synchronized(this) {
+            instance ?: ViewModelFactory(Injection.provideFilmRepository()).apply {
                 instance = this
             }
         }

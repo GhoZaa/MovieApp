@@ -1,7 +1,6 @@
-package com.ghozadev.movieapp.data.source
+package com.ghozadev.movieapp.data
 
 import androidx.lifecycle.LiveData
-import com.ghozadev.movieapp.data.FilmEntity
 
 interface FilmDataSource {
 
