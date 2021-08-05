@@ -7,14 +7,13 @@ import com.ghozadev.movieapp.data.FilmEntity
 import com.ghozadev.movieapp.data.FilmRepository
 import com.ghozadev.movieapp.utils.DataDummy
 import com.nhaarman.mockitokotlin2.verify
-import org.junit.Test
-
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
+import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.Mockito.`when`
 import org.mockito.junit.MockitoJUnitRunner
 
@@ -40,8 +39,6 @@ class DetailFilmViewModelTest {
     @Before
     fun setUp() {
         viewModel = DetailFilmViewModel(filmRepository)
-//        viewModel.setSelectedFilm(movieId)
-//        viewModel.setSelectedFilm(tvShowId)
     }
 
     @Test
