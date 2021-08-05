@@ -47,12 +47,12 @@ class DetailFilmActivity : AppCompatActivity() {
 
             if (type.equals(TYPE_MOVIE, ignoreCase = true)) {
                 activityDetailFilmBinding.progressBar.visibility = View.GONE
-                viewModel.setSelectedFilm(filmId)
-                viewModel.getMovie().observe(this, { film -> populateFilm(film) })
+//                viewModel.setSelectedFilm(filmId)
+                viewModel.getMovie(filmId).observe(this, { film -> populateFilm(film) })
             } else if (type.equals(TYPE_TV_SHOW, ignoreCase = true)) {
                 activityDetailFilmBinding.progressBar.visibility = View.GONE
-                viewModel.setSelectedFilm(filmId)
-                viewModel.getTvShow().observe(this, { film -> populateFilm(film) })
+//                viewModel.setSelectedFilm(filmId)
+                viewModel.getTvShow(filmId).observe(this, { film -> populateFilm(film) })
             }
         }
     }

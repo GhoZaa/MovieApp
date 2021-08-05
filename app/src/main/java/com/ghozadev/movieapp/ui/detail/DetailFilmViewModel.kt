@@ -13,7 +13,11 @@ class DetailFilmViewModel(private val filmRepository: FilmRepository) : ViewMode
         this.filmId = filmId
     }
 
-    fun getMovie(): LiveData<FilmEntity> = filmRepository.getMovieDetail(filmId)
+//    fun getMovie(): LiveData<FilmEntity> = filmRepository.getMovieDetail(filmId)
+//
+//    fun getTvShow(): LiveData<FilmEntity> = filmRepository.getTvShowDetail(filmId)
 
-    fun getTvShow(): LiveData<FilmEntity> = filmRepository.getTvShowDetail(filmId)
+    fun getMovie(movieId: Int): LiveData<FilmEntity> = filmRepository.getMovieDetail(movieId)
+
+    fun getTvShow(tvShowId: Int): LiveData<FilmEntity> = filmRepository.getTvShowDetail(tvShowId)
 }

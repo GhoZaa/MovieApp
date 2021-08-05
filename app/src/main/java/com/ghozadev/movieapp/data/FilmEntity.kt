@@ -7,7 +7,6 @@ import kotlinx.android.parcel.Parcelize
 data class FilmEntity(
     var id: Int = 0,
     var title: String? = null,
-    var backdropPath: String? = null,
     var posterPath: String? = null,
     var releaseDate: String? = null,
     var description: String,

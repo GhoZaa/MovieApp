@@ -16,9 +16,9 @@ class FilmRepository private constructor(private val remoteDataSource: RemoteDat
         @Volatile
         private var instance: FilmRepository? = null
 
-        fun getInstance(remoteDataSource: RemoteDataSource): FilmRepository =
+        fun getInstance(remoteData: RemoteDataSource): FilmRepository =
             instance ?: synchronized(this) {
-                instance ?: FilmRepository(remoteDataSource)
+                instance ?: FilmRepository(remoteData).apply { instance = this }
             }
     }
 
@@ -33,7 +33,6 @@ class FilmRepository private constructor(private val remoteDataSource: RemoteDat
                         val movie = FilmEntity(
                             response.id,
                             response.title,
-                            response.backdropPath,
                             response.posterPath,
                             response.releaseDate,
                             response.description,
@@ -58,7 +57,6 @@ class FilmRepository private constructor(private val remoteDataSource: RemoteDat
                     val movie = FilmEntity(
                         movieResponse.id,
                         movieResponse.title,
-                        movieResponse.backdropPath,
                         movieResponse.posterPath,
                         movieResponse.releaseDate,
                         movieResponse.description,
@@ -82,7 +80,6 @@ class FilmRepository private constructor(private val remoteDataSource: RemoteDat
                         val tvShow = FilmEntity(
                             response.id,
                             response.title,
-                            response.backdropPath,
                             response.posterPath,
                             response.releaseDate,
                             response.description,
@@ -106,7 +103,6 @@ class FilmRepository private constructor(private val remoteDataSource: RemoteDat
                     val tvShow = FilmEntity(
                         tvShowResponse.id,
                         tvShowResponse.title,
-                        tvShowResponse.backdropPath,
                         tvShowResponse.posterPath,
                         tvShowResponse.releaseDate,
                         tvShowResponse.description,

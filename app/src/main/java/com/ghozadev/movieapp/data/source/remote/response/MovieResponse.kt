@@ -10,9 +10,6 @@ data class MovieResponse(
 	@field:SerializedName("title")
 	val title: String,
 
-	@field:SerializedName("backdrop_path")
-	val backdropPath: String,
-
 	@field:SerializedName("poster_path")
 	val posterPath: String,
 
