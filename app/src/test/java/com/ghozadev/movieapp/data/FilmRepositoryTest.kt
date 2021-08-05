@@ -2,17 +2,18 @@ package com.ghozadev.movieapp.data
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.ghozadev.movieapp.data.source.remote.RemoteDataSource
-import com.ghozadev.movieapp.data.source.remote.response.MovieResponse
 import com.ghozadev.movieapp.utils.DataDummy
 import com.ghozadev.movieapp.utils.LiveDataTestUtil
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.doAnswer
+import com.nhaarman.mockitokotlin2.eq
 import com.nhaarman.mockitokotlin2.verify
-import org.junit.Assert.*
-import org.junit.Test
+import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Rule
+import org.junit.Test
 import org.mockito.Mockito.mock
-import org.mockito.Mockito.`when`
 
 class FilmRepositoryTest {
 
@@ -30,17 +31,81 @@ class FilmRepositoryTest {
     private val tvShowResponse = DataDummy.generateRemoteDummyTvShow()[0]
 
     @Test
-    suspend fun getPopularMovies() {
-        doAnswer {invocation ->
-            (invocation.arguments[0] as RemoteDataSource.LoadPopularMoviesCallback).onAllMoviesReceived(listMovieResponse)
-            null
-        }.`when`(remote).getPopularMovies(any())
+    fun getPopularMovies() {
+        runBlocking {
+            doAnswer {invocation ->
+                (invocation.arguments[0] as RemoteDataSource.LoadPopularMoviesCallback)
+                    .onAllMoviesReceived(listMovieResponse)
+                null
+            }.`when`(remote).getPopularMovies(any())
+        }
 
         val movieEntities = LiveDataTestUtil.getValue(filmRepository.getPopularMovies())
 
-        verify(remote).getPopularMovies(any())
+        runBlocking {
+            verify(remote).getPopularMovies(any())
+        }
 
         assertNotNull(movieEntities)
         assertEquals(listMovieResponse.size.toLong(), movieEntities.size.toLong())
+    }
+
+    @Test
+    fun getMovieDetail() {
+        runBlocking {
+            doAnswer {invocation ->
+                (invocation.arguments[1] as RemoteDataSource.LoadMovieDetailCallback)
+                    .onMovieDetailReceived(movieResponse)
+                null
+            }.`when`(remote).getMovieDetail(eq(movieId), any())
+        }
+
+        val movieEntities = LiveDataTestUtil.getValue(filmRepository.getMovieDetail(movieId))
+
+        runBlocking {
+            verify(remote).getMovieDetail(eq(movieId), any())
+        }
+
+        assertNotNull(movieEntities)
+        assertEquals(movieResponse.id, movieEntities.id)
+    }
+
+    @Test
+    fun getPopularTvShow() {
+        runBlocking {
+            doAnswer {invocation ->
+                (invocation.arguments[0] as RemoteDataSource.LoadPopularTvShowsCallback)
+                    .onAllTvShowReceived(listTvShowResponse)
+                null
+            }.`when`(remote).getPopularTvShows(any())
+        }
+
+        val tvShowEntities = LiveDataTestUtil.getValue(filmRepository.getPopularTvShow())
+
+        runBlocking {
+            verify(remote).getPopularTvShows(any())
+        }
+
+        assertNotNull(tvShowEntities)
+        assertEquals(listTvShowResponse.size.toLong(), tvShowEntities.size.toLong())
+    }
+
+    @Test
+    fun getTvShowDetail() {
+        runBlocking {
+            doAnswer {invocation ->
+                (invocation.arguments[1] as RemoteDataSource.LoadTvShowDetailCallback).onTvShowDetailReceived(tvShowResponse)
+                null
+            }.`when`(remote).getTvShowDetail(eq(tvShowId), any())
+        }
+
+        val tvShowEntities = LiveDataTestUtil.getValue(filmRepository.getTvShowDetail(tvShowId))
+
+        runBlocking {
+            verify(remote).getTvShowDetail(eq(tvShowId), any())
+        }
+
+        assertNotNull(tvShowEntities)
+        assertEquals(tvShowResponse.id, tvShowEntities.id)
     }
 }

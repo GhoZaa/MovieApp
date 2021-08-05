@@ -12,83 +12,83 @@ object DataDummy {
 
         films.add(FilmEntity(
             1,
-            "Chaos Walking",
-            "",
-            "7 April 2021",
-            "Two unlikely companions embark on a perilous adventure through the badlands of an unexplored planet as they try to escape a dangerous and disorienting reality, where all inner thoughts are seen and heard by everyone.",
-            "",
+            "F9",
+            "/bOFaAXmWWXC3Rbv4u4uM9ZSzRXP.jpg",
+            "2021-05-19",
+            "Dominic Toretto and his crew battle the most skilled assassin and high-performance driver they've ever encountered: his forsaken brother.",
+            "MOVIE",
             ))
         films.add(FilmEntity(
             2,
-            "Cherry",
-            "",
-            "26 February 2021",
-            "Cherry drifts from college dropout to army medic in Iraq - anchored only by his true love, Emily. But after returning from the war with PTSD, his life spirals into drugs and crime as he struggles to find his place in the world.",
-            "",
+            "Jungle Cruise",
+            "/9dKCd55IuTT5QRs989m9Qlb7d2B.jpg",
+            "2021-07-28",
+            "Dr. Lily Houghton enlists the aid of wisecracking skipper Frank Wolff to take her down the Amazon in his dilapidated boat. Together, they search for an ancient tree that holds the power to heal – a discovery that will change the future of medicine.",
+            "MOVIE"
             ))
         films.add(FilmEntity(
             3,
-            "Cruella",
-            "",
-            "28 May 2021",
-            "In 1970s London amidst the punk rock revolution, a young grifter named Estella is determined to make a name for herself with her designs. She befriends a pair of young thieves who appreciate her appetite for mischief, and together they are able to build a life for themselves on the London streets. One day, Estella’s flair for fashion catches the eye of the Baroness von Hellman, a fashion legend who is devastatingly chic and terrifyingly haute. But their relationship sets in motion a course of events and revelations that will cause Estella to embrace her wicked side and become the raucous, fashionable and revenge-bent Cruella.",
-            "",
+            "Black Widow",
+            "/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg",
+            "2021-07-07",
+            "Natasha Romanoff, also known as Black Widow, confronts the darker parts of her ledger when a dangerous conspiracy with ties to her past arises. Pursued by a force that will stop at nothing to bring her down, Natasha must deal with her history as a spy and the broken relationships left in her wake long before she became an Avenger.",
+            "MOVIE",
             ))
         films.add(FilmEntity(
             4,
-            "Godzilla vs. Kong",
-            "",
-            "24 March 2021",
-            "In a time when monsters walk the Earth, humanity’s fight for its future sets Godzilla and Kong on a collision course that will see the two most powerful forces of nature on the planet collide in a spectacular battle for the ages.",
-            "",
+            "Space Jam: A New Legacy",
+            "/5bFK5d3mVTAvBCXi5NPWH0tYjKl.jpg",
+            "2021-07-08",
+            "When LeBron and his young son Dom are trapped in a digital space by a rogue A.I., LeBron must get them home safe by leading Bugs, Lola Bunny and the whole gang of notoriously undisciplined Looney Tunes to victory over the A.I.'s digitized champions on the court. It's Tunes versus Goons in the highest-stakes challenge of his life.",
+            "MOVIE"
             ))
         films.add(FilmEntity(
             5,
-            "Mortal Kombat",
-            "",
-            "14 April 2021",
-            "Washed-up MMA fighter Cole Young, unaware of his heritage, and hunted by Emperor Shang Tsung's best warrior, Sub-Zero, seeks out and trains with Earth's greatest champions as he prepares to stand against the enemies of Outworld in a high stakes battle for the universe.",
-            "",
+            "The Boss Baby: Family Business",
+            "/5dExO5G2iaaTxYnLIFKLWofDzyI.jpg",
+            "2021-07-01",
+            "The Templeton brothers — Tim and his Boss Baby little bro Ted — have become adults and drifted away from each other. But a new boss baby with a cutting-edge approach and a can-do attitude is about to bring them together again … and inspire a new family business.",
+            "MOVIE"
             ))
         films.add(FilmEntity(
             6,
-            "Nobody",
-            "",
-            "26 March 2021",
-            "Hutch Mansell, a suburban dad, overlooked husband, nothing neighbor — a \"nobody.\" When two thieves break into his home one night, Hutch's unknown long-simmering rage is ignited and propels him on a brutal path that will uncover dark secrets he fought to leave behind.",
-            "",
+            "The Forever Purge",
+            "/uHA5COgDzcxjpYSHHulrKVl6ByL.jpg",
+            "2021-06-30",
+            "All the rules are broken as a sect of lawless marauders decides that the annual Purge does not stop at daybreak and instead should never end as they chase a group of immigrants who they want to punish because of their harsh historical past.",
+            "MOVIE"
             ))
         films.add(FilmEntity(
             7,
-            "Raya and the Last Dragon",
-            "",
-            "3 March 2021",
-            "Long ago, in the fantasy world of Kumandra, humans and dragons lived together in harmony. But when an evil force threatened the land, the dragons sacrificed themselves to save humanity. Now, 500 years later, that same evil has returned and it’s up to a lone warrior, Raya, to track down the legendary last dragon to restore the fractured land and its divided people.",
-            "",
+            "Luca",
+            "/jTswp6KyDYKtvC52GbHagrZbGvD.jpg",
+            "2021-06-17",
+            "Luca and his best friend Alberto experience an unforgettable summer on the Italian Riviera. But all the fun is threatened by a deeply-held secret: they are sea monsters from another world just below the water’s surface.",
+            "MOVIE"
             ))
         films.add(FilmEntity(
             8,
-            "Soul",
-            "",
-            "25 December 2020",
-            "Joe Gardner is a middle school teacher with a love for jazz music. After a successful gig at the Half Note Club, he suddenly gets into an accident that separates his soul from his body and is transported to the You Seminar, a center in which souls develop and gain passions before being transported to a newborn child. Joe must enlist help from the other souls-in-training, like 22, a soul who has spent eons in the You Seminar, in order to get back to Earth.",
-            "",
+            "The Tomorrow War",
+            "/34nDCQZwaEvsy4CFO5hkGRFDCVU.jpg",
+            "2021-06-30",
+            "The world is stunned when a group of time travelers arrive from the year 2051 to deliver an urgent message: Thirty years in the future, mankind is losing a global war against a deadly alien species. The only hope for survival is for soldiers and civilians from the present to be transported to the future and join the fight. Among those recruited is high school teacher and family man Dan Forester. Determined to save the world for his young daughter, Dan teams up with a brilliant scientist and his estranged father in a desperate quest to rewrite the fate of the planet.",
+            "MOVIE"
             ))
         films.add(FilmEntity(
             9,
-            "The Marksman",
-            "",
-            "15 January 2021",
-            "Jim Hanson’s quiet life is suddenly disturbed by two people crossing the US/Mexico border – a woman and her young son – desperate to flee a Mexican cartel. After a shootout leaves the mother dead, Jim becomes the boy’s reluctant defender. He embraces his role as Miguel’s protector and will stop at nothing to get him to safety, as they go on the run from the relentless assassins.",
-            "",
+            "Blood Red Sky",
+            "/ky8Fua6PD7FyyOA7JACh3GDETli.jpg",
+            "2021-07-23",
+            "A woman with a mysterious illness is forced into action when a group of terrorists attempt to hijack a transatlantic overnight flight. In order to protect her son she will have to reveal a dark secret, and unleash the inner monster she has fought to hide.",
+            "MOVIE"
             ))
         films.add(FilmEntity(
             10,
-            "Wrath of Man",
-            "",
-            "5 May 2021",
-            "A cold and mysterious new security guard for a Los Angeles cash truck company surprises his co-workers when he unleashes precision skills during a heist. The crew is left wondering who he is and where he came from. Soon, the marksman's ultimate motive becomes clear as he takes dramatic and irrevocable steps to settle a score.",
-            "",
+            "The Exorcism of Carmen Farias",
+            "/uoTPjx07dxTrC1g3dYeaS2WNVGL.jpg",
+            "2021-07-05",
+            "Carmen, a brave journalist, discovers soon after her mother's death that she has inherited her grandma's house. She decides to move there without knowing it hides dark secrets.",
+            "MOVIE"
             ))
 
         return films
@@ -99,83 +99,83 @@ object DataDummy {
 
         films.add(FilmEntity(
             11,
-            "Cobra Kai",
-            "",
-            "2 May 2018",
-            "This Karate Kid sequel series picks up 30 years after the events of the 1984 All Valley Karate Tournament and finds Johnny Lawrence on the hunt for redemption by reopening the infamous Cobra Kai karate dojo. This reignites his old rivalry with the successful Daniel LaRusso, who has been working to maintain the balance in his life without mentor Mr. Miyagi.",
-            "",
+            "I Am Not an Animal",
+            "/qG59J1Q7rpBc1dvku4azbzcqo8h.jpg",
+            "2004-05-10",
+            "I Am Not An Animal is an animated comedy series about the only six talking animals in the world, whose cosseted existence in a vivisection unit is turned upside down when they are liberated by animal rights activists.",
+            "TV_SHOW"
         ))
         films.add(FilmEntity(
             12,
-            "Game of Thrones",
-            "",
-            "17 April 2011",
-            "Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond.",
-            "",
+            "Run BTS!",
+            "/xxv8Ibs8Anni6qrWkAf60rDsPCu.jpg",
+            "2015-08-01",
+            "Run BTS! is a South Korean show by the boy band BTS. The show is all about BTS doing activities, challenges and lots more.",
+            "TV_SHOW"
         ))
         films.add(FilmEntity(
             13,
-            "Legacies",
-            "",
-            "25 October 2018",
-            "In a place where young witches, vampires, and werewolves are nurtured to be their best selves in spite of their worst impulses, Klaus Mikaelson’s daughter, 17-year-old Hope Mikaelson, Alaric Saltzman’s twins, Lizzie and Josie Saltzman, among others, come of age into heroes and villains at The Salvatore School for the Young and Gifted.",
-            "",
+            "Young Royals",
+            "/6CHznbr0BF78ar16zJwTVRYLLOX.jpg",
+            "2021-07-01",
+            "Prince Wilhelm adjusts to life at his prestigious new boarding school, Hillerska, but following his heart proves more challenging than anticipated.",
+            "TV_SHOW"
         ))
         films.add(FilmEntity(
             14,
-            "Lucifer",
+            "Metal Family",
+            "/yovTSLBdNjXIVo8CPaPWFE5NcAw.jpg",
+            "2018-09-13",
             "",
-            "25 January 2016",
-            "Bored and unhappy as the Lord of Hell, Lucifer Morningstar abandoned his throne and retired to Los Angeles, where he has teamed up with LAPD detective Chloe Decker to take down criminals. But the longer he's away from the underworld, the greater the threat that the worst of humanity could escape.",
-            "",
+            "TV_SHOW"
         ))
         films.add(FilmEntity(
             15,
-            "Money Heist",
-            "",
-            "2 May 2017",
-            "To carry out the biggest heist in history, a mysterious man called The Professor recruits a band of eight robbers who have a single characteristic: none of them has anything to lose. Five months of seclusion - memorizing every step, every detail, every probability - culminate in eleven days locked up in the National Coinage and Stamp Factory of Spain, surrounded by police forces and with dozens of hostages in their power, to find out whether their suicide wager will lead to everything or nothing.",
-            "",
+            "The Rising of the Shield Hero",
+            "/6cXf5EDwVhsRv8GlBzUTVnWuk8Z.jpg",
+            "2019-01-09",
+            "Iwatani Naofumi was summoned into a parallel world along with 3 other people to become the world's Heroes. Each of the heroes respectively equipped with their own legendary equipment when summoned, Naofumi received the Legendary Shield as his weapon. Due to Naofumi's lack of charisma and experience he's labeled as the weakest, only to end up betrayed, falsely accused, and robbed by on the third day of adventure. Shunned by everyone from the king to peasants, Naofumi's thoughts were filled with nothing but vengeance and hatred. Thus, his destiny in a parallel World begins...",
+            "TV_SHOW"
         ))
         films.add(FilmEntity(
             16,
-            "Riverdale",
-            "",
-            "26 January 2017",
-            "Set in the present, the series offers a bold, subversive take on Archie, Betty, Veronica and their friends, exploring the surreality of small-town life, the darkness and weirdness bubbling beneath Riverdale’s wholesome facade.",
-            "",
+            "Given",
+            "/pdDCcAq8RNSZNk81PXYoHNUPHjn.jpg",
+            "2019-07-12",
+            "Tightly clutching his Gibson guitar, Mafuyu Satou steps out of his dark apartment to begin another day of his high school life. While taking a nap in a quiet spot on the gymnasium staircase, he has a chance encounter with fellow student Ritsuka Uenoyama, who berates him for letting his guitar's strings rust and break. Noticing Uenoyama's knowledge of the instrument, Satou pleads for him to fix it and to teach him how to play. Uenoyama eventually agrees and invites him to sit in on a jam session with his two band mates: bassist Haruki Nakayama and drummer Akihiko Kaji.",
+            "TV_SHOW"
         ))
         films.add(FilmEntity(
             17,
-            "The Boys",
-            "",
-            "25 July 2019",
-            "A group of vigilantes known informally as “The Boys” set out to take down corrupt superheroes with no more than blue-collar grit and a willingness to fight dirty.",
-            "",
+            "The Promised Neverland",
+            "/oBgRCpAbtMpk1v8wfdsIph7lPQE.jpg",
+            "2019-01-11",
+            "Surrounded by a forest and a gated entrance, the Grace Field House is inhabited by orphans happily living together as one big family, looked after by their \\\"Mama,\\\" Isabella. Although they are required to take tests daily, the children are free to spend their time as they see fit, usually playing outside, as long as they do not venture too far from the orphanage — a rule they are expected to follow no matter what. However, all good times must come to an end, as every few months, a child is adopted and sent to live with their new family... never to be heard from again.\\n\\nHowever, the three oldest siblings have their suspicions about what is actually happening at the orphanage, and they are about to discover the cruel fate that awaits the children living at Grace Field, including the twisted nature of their beloved Mama.",
+            "TV_SHOW"
         ))
         films.add(FilmEntity(
             18,
-            "The Good Doctor",
-            "",
-            "25 September 2017",
-            "A young surgeon with Savant syndrome is recruited into the surgical unit of a prestigious hospital. The question will arise: can a person who doesn't have the ability to relate to people actually save their lives",
-            "",
+            "Helluva Boss",
+            "/mEHUgujxM62HtOyqNgZFENMIqgb.jpg",
+            "2020-10-31",
+            "Follow Blitzo, a classic demon Imp who sets out to run his own small assassin business with his weapons specialist Moxxie, his bruiser Millie, and his receptionist hellhound Loona. Together they attempt to survive each other while running a startup in Hell.",
+            "TV_SHOW"
         ))
         films.add(FilmEntity(
             19,
-            "The Mandalorian",
-            "",
-            "12 November 2019",
-            "After the fall of the Galactic Empire, lawlessness has spread throughout the galaxy. A lone gunfighter makes his way through the outer reaches, earning his keep as a bounty hunter.",
-            "",
+            "Maid Sama!",
+            "/igkn0M1bgMeATz59LShvVxZNdVd.jpg",
+            "2010-04-02",
+            "Misaki Ayuzawa is the first female student council president at a once all-boys school turned co-ed. She rules the school with strict discipline demeanor. But she has a secret—she works at a maid cafe due to her families circumstances. One day the popular A-student and notorious heart breaker Takumi Usui finds out her secret and makes a deal with her to keep it hush from the school in exchange for spending some time with him.",
+            "TV_SHOW"
         ))
         films.add(FilmEntity(
             20,
-            "Vikings",
-            "",
-            "3 March 2013",
-            "The adve\"\"ntures of Ragnar Lothbrok, the greatest hero of his age. The series tells the sagas of Ragnar's band of Viking brothers and his family, as he rises to become King of the Viking tribes. As well as being a fearless warrior, Ragnar embodies the Norse traditions of devotion to the gods. Legend has it that he was a direct descendant of Odin, the god of war and warriors.",
-            "",
+            "Your Lie in April",
+            "/IGbeFv5Ji4W0x530JcSHiQpamY.jpg",
+            "2014-10-10",
+            "Kousei Arima was a genius pianist until his mother's sudden death took away his ability to play. Each day was dull for Kousei. But, then he meets a violinist named Kaori Miyazono who has an eccentric playing style. Can the heartfelt sounds of the girl's violin lead the boy to play the piano again?",
+            "TV_SHOW"
         ))
 
         return  films
@@ -186,73 +186,73 @@ object DataDummy {
 
         movies.add(MovieResponse(
             1,
-            "",
-            "",
-            "",
-            "",
+            "F9",
+            "/bOFaAXmWWXC3Rbv4u4uM9ZSzRXP.jpg",
+            "2021-05-19",
+            "Dominic Toretto and his crew battle the most skilled assassin and high-performance driver they've ever encountered: his forsaken brother.",
         ))
         movies.add(MovieResponse(
             2,
-            "",
-            "",
-            "",
-            "",
+            "Jungle Cruise",
+            "/9dKCd55IuTT5QRs989m9Qlb7d2B.jpg",
+            "2021-07-28",
+            "Dr. Lily Houghton enlists the aid of wisecracking skipper Frank Wolff to take her down the Amazon in his dilapidated boat. Together, they search for an ancient tree that holds the power to heal – a discovery that will change the future of medicine.",
         ))
         movies.add(MovieResponse(
             3,
-            "",
-            "",
-            "",
-            "",
+            "Black Widow",
+            "/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg",
+            "2021-07-07",
+            "Natasha Romanoff, also known as Black Widow, confronts the darker parts of her ledger when a dangerous conspiracy with ties to her past arises. Pursued by a force that will stop at nothing to bring her down, Natasha must deal with her history as a spy and the broken relationships left in her wake long before she became an Avenger.",
         ))
         movies.add(MovieResponse(
             4,
-            "",
-            "",
-            "",
-            "",
+            "Space Jam: A New Legacy",
+            "/5bFK5d3mVTAvBCXi5NPWH0tYjKl.jpg",
+            "2021-07-08",
+            "When LeBron and his young son Dom are trapped in a digital space by a rogue A.I., LeBron must get them home safe by leading Bugs, Lola Bunny and the whole gang of notoriously undisciplined Looney Tunes to victory over the A.I.'s digitized champions on the court. It's Tunes versus Goons in the highest-stakes challenge of his life.",
         ))
         movies.add(MovieResponse(
             5,
-            "",
-            "",
-            "",
-            "",
+            "The Boss Baby: Family Business",
+            "/5dExO5G2iaaTxYnLIFKLWofDzyI.jpg",
+            "2021-07-01",
+            "The Templeton brothers — Tim and his Boss Baby little bro Ted — have become adults and drifted away from each other. But a new boss baby with a cutting-edge approach and a can-do attitude is about to bring them together again … and inspire a new family business.",
         ))
         movies.add(MovieResponse(
             6,
-            "",
-            "",
-            "",
-            "",
+            "The Forever Purge",
+            "/uHA5COgDzcxjpYSHHulrKVl6ByL.jpg",
+            "2021-06-30",
+            "All the rules are broken as a sect of lawless marauders decides that the annual Purge does not stop at daybreak and instead should never end as they chase a group of immigrants who they want to punish because of their harsh historical past.",
         ))
         movies.add(MovieResponse(
             7,
-            "",
-            "",
-            "",
-            "",
+            "Luca",
+            "/jTswp6KyDYKtvC52GbHagrZbGvD.jpg",
+            "2021-06-17",
+            "Luca and his best friend Alberto experience an unforgettable summer on the Italian Riviera. But all the fun is threatened by a deeply-held secret: they are sea monsters from another world just below the water’s surface.",
         ))
         movies.add(MovieResponse(
             8,
-            "",
-            "",
-            "",
-            "",
+            "The Tomorrow War",
+            "/34nDCQZwaEvsy4CFO5hkGRFDCVU.jpg",
+            "2021-06-30",
+            "The world is stunned when a group of time travelers arrive from the year 2051 to deliver an urgent message: Thirty years in the future, mankind is losing a global war against a deadly alien species. The only hope for survival is for soldiers and civilians from the present to be transported to the future and join the fight. Among those recruited is high school teacher and family man Dan Forester. Determined to save the world for his young daughter, Dan teams up with a brilliant scientist and his estranged father in a desperate quest to rewrite the fate of the planet.",
         ))
         movies.add(MovieResponse(
             9,
-            "",
-            "",
-            "",
-            "",
+            "Blood Red Sky",
+            "/ky8Fua6PD7FyyOA7JACh3GDETli.jpg",
+            "2021-07-23",
+            "A woman with a mysterious illness is forced into action when a group of terrorists attempt to hijack a transatlantic overnight flight. In order to protect her son she will have to reveal a dark secret, and unleash the inner monster she has fought to hide.",
         ))
         movies.add(MovieResponse(
             10,
-            "",
-            "",
-            "",
-            "",
+            "The Exorcism of Carmen Farias",
+            "/uoTPjx07dxTrC1g3dYeaS2WNVGL.jpg",
+            "2021-07-05",
+            "Carmen, a brave journalist, discovers soon after her mother's death that she has inherited her grandma's house. She decides to move there without knowing it hides dark secrets.",
         ))
 
         return movies
@@ -263,73 +263,73 @@ object DataDummy {
 
         tvShows.add(TvShowResponse(
             11,
-            "",
-            "",
-            "",
-            "",
+            "I Am Not an Animal",
+            "/qG59J1Q7rpBc1dvku4azbzcqo8h.jpg",
+            "2004-05-10",
+            "I Am Not An Animal is an animated comedy series about the only six talking animals in the world, whose cosseted existence in a vivisection unit is turned upside down when they are liberated by animal rights activists.",
         ))
         tvShows.add(TvShowResponse(
             12,
-            "",
-            "",
-            "",
-            "",
+            "Run BTS!",
+            "/xxv8Ibs8Anni6qrWkAf60rDsPCu.jpg",
+            "2015-08-01",
+            "Run BTS! is a South Korean show by the boy band BTS. The show is all about BTS doing activities, challenges and lots more.",
         ))
         tvShows.add(TvShowResponse(
             13,
-            "",
-            "",
-            "",
-            "",
+            "Young Royals",
+            "/6CHznbr0BF78ar16zJwTVRYLLOX.jpg",
+            "2021-07-01",
+            "Prince Wilhelm adjusts to life at his prestigious new boarding school, Hillerska, but following his heart proves more challenging than anticipated.",
         ))
         tvShows.add(TvShowResponse(
             14,
-            "",
-            "",
-            "",
+            "Metal Family",
+            "/yovTSLBdNjXIVo8CPaPWFE5NcAw.jpg",
+            "2018-09-13",
             "",
         ))
         tvShows.add(TvShowResponse(
             15,
-            "",
-            "",
-            "",
-            "",
+            "The Rising of the Shield Hero",
+            "/6cXf5EDwVhsRv8GlBzUTVnWuk8Z.jpg",
+            "2019-01-09",
+            "Iwatani Naofumi was summoned into a parallel world along with 3 other people to become the world's Heroes. Each of the heroes respectively equipped with their own legendary equipment when summoned, Naofumi received the Legendary Shield as his weapon. Due to Naofumi's lack of charisma and experience he's labeled as the weakest, only to end up betrayed, falsely accused, and robbed by on the third day of adventure. Shunned by everyone from the king to peasants, Naofumi's thoughts were filled with nothing but vengeance and hatred. Thus, his destiny in a parallel World begins...",
         ))
         tvShows.add(TvShowResponse(
             16,
-            "",
-            "",
-            "",
-            "",
+            "Given",
+            "/pdDCcAq8RNSZNk81PXYoHNUPHjn.jpg",
+            "2019-07-12",
+            "Tightly clutching his Gibson guitar, Mafuyu Satou steps out of his dark apartment to begin another day of his high school life. While taking a nap in a quiet spot on the gymnasium staircase, he has a chance encounter with fellow student Ritsuka Uenoyama, who berates him for letting his guitar's strings rust and break. Noticing Uenoyama's knowledge of the instrument, Satou pleads for him to fix it and to teach him how to play. Uenoyama eventually agrees and invites him to sit in on a jam session with his two band mates: bassist Haruki Nakayama and drummer Akihiko Kaji.",
         ))
         tvShows.add(TvShowResponse(
             17,
-            "",
-            "",
-            "",
-            "",
+            "The Promised Neverland",
+            "/oBgRCpAbtMpk1v8wfdsIph7lPQE.jpg",
+            "2019-01-11",
+            "Surrounded by a forest and a gated entrance, the Grace Field House is inhabited by orphans happily living together as one big family, looked after by their \\\"Mama,\\\" Isabella. Although they are required to take tests daily, the children are free to spend their time as they see fit, usually playing outside, as long as they do not venture too far from the orphanage — a rule they are expected to follow no matter what. However, all good times must come to an end, as every few months, a child is adopted and sent to live with their new family... never to be heard from again.\\n\\nHowever, the three oldest siblings have their suspicions about what is actually happening at the orphanage, and they are about to discover the cruel fate that awaits the children living at Grace Field, including the twisted nature of their beloved Mama.",
         ))
         tvShows.add(TvShowResponse(
             18,
-            "",
-            "",
-            "",
-            "",
+            "Helluva Boss",
+            "/mEHUgujxM62HtOyqNgZFENMIqgb.jpg",
+            "2020-10-31",
+            "Follow Blitzo, a classic demon Imp who sets out to run his own small assassin business with his weapons specialist Moxxie, his bruiser Millie, and his receptionist hellhound Loona. Together they attempt to survive each other while running a startup in Hell.",
         ))
         tvShows.add(TvShowResponse(
             19,
-            "",
-            "",
-            "",
-            "",
+            "Maid Sama!",
+            "/igkn0M1bgMeATz59LShvVxZNdVd.jpg",
+            "2010-04-02",
+            "Misaki Ayuzawa is the first female student council president at a once all-boys school turned co-ed. She rules the school with strict discipline demeanor. But she has a secret—she works at a maid cafe due to her families circumstances. One day the popular A-student and notorious heart breaker Takumi Usui finds out her secret and makes a deal with her to keep it hush from the school in exchange for spending some time with him.",
         ))
         tvShows.add(TvShowResponse(
             20,
-            "",
-            "",
-            "",
-            "",
+            "Your Lie in April",
+            "/IGbeFv5Ji4W0x530JcSHiQpamY.jpg",
+            "2014-10-10",
+            "Kousei Arima was a genius pianist until his mother's sudden death took away his ability to play. Each day was dull for Kousei. But, then he meets a violinist named Kaori Miyazono who has an eccentric playing style. Can the heartfelt sounds of the girl's violin lead the boy to play the piano again?",
         ))
 
         return tvShows
