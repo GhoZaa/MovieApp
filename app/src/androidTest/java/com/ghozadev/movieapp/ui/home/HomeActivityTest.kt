@@ -43,6 +43,7 @@ class HomeActivityTest {
     @Test
     fun loadDetailMovie() {
         onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+        onView(withId(R.id.image_poster)).check(matches(isDisplayed()))
         onView(withId(R.id.text_title)).check(matches(isDisplayed()))
         onView(withId(R.id.text_title)).check(matches(withText(dummyMovie[0].title)))
         onView(withId(R.id.text_release_date)).check(matches(isDisplayed()))
@@ -62,6 +63,7 @@ class HomeActivityTest {
     fun loadDetailTvShow() {
         onView(withText("TV SHOW")).perform(click())
         onView(withId(R.id.rv_tv_show)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+        onView(withId(R.id.image_poster)).check(matches(isDisplayed()))
         onView(withId(R.id.text_title)).check(matches(isDisplayed()))
         onView(withId(R.id.text_title)).check(matches(withText(dummyTvShow[0].title)))
         onView(withId(R.id.text_release_date)).check(matches(isDisplayed()))
