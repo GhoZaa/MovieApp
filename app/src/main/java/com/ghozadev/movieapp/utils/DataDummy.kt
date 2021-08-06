@@ -12,19 +12,19 @@ object DataDummy {
 
         films.add(FilmEntity(
             1,
-            "F9",
-            "/bOFaAXmWWXC3Rbv4u4uM9ZSzRXP.jpg",
-            "2021-05-19",
-            "Dominic Toretto and his crew battle the most skilled assassin and high-performance driver they've ever encountered: his forsaken brother.",
-            "MOVIE",
-            ))
-        films.add(FilmEntity(
-            2,
             "Jungle Cruise",
             "/9dKCd55IuTT5QRs989m9Qlb7d2B.jpg",
             "2021-07-28",
             "Dr. Lily Houghton enlists the aid of wisecracking skipper Frank Wolff to take her down the Amazon in his dilapidated boat. Together, they search for an ancient tree that holds the power to heal – a discovery that will change the future of medicine.",
             "MOVIE"
+            ))
+        films.add(FilmEntity(
+            2,
+            "F9",
+            "/bOFaAXmWWXC3Rbv4u4uM9ZSzRXP.jpg",
+            "2021-05-19",
+            "Dominic Toretto and his crew battle the most skilled assassin and high-performance driver they've ever encountered: his forsaken brother.",
+            "MOVIE",
             ))
         films.add(FilmEntity(
             3,
@@ -186,17 +186,17 @@ object DataDummy {
 
         movies.add(MovieResponse(
             1,
-            "F9",
-            "/bOFaAXmWWXC3Rbv4u4uM9ZSzRXP.jpg",
-            "2021-05-19",
-            "Dominic Toretto and his crew battle the most skilled assassin and high-performance driver they've ever encountered: his forsaken brother.",
-        ))
-        movies.add(MovieResponse(
-            2,
             "Jungle Cruise",
             "/9dKCd55IuTT5QRs989m9Qlb7d2B.jpg",
             "2021-07-28",
             "Dr. Lily Houghton enlists the aid of wisecracking skipper Frank Wolff to take her down the Amazon in his dilapidated boat. Together, they search for an ancient tree that holds the power to heal – a discovery that will change the future of medicine.",
+        ))
+        movies.add(MovieResponse(
+            2,
+            "F9",
+            "/bOFaAXmWWXC3Rbv4u4uM9ZSzRXP.jpg",
+            "2021-05-19",
+            "Dominic Toretto and his crew battle the most skilled assassin and high-performance driver they've ever encountered: his forsaken brother.",
         ))
         movies.add(MovieResponse(
             3,
