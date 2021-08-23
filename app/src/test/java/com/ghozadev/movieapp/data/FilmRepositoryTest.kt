@@ -68,6 +68,10 @@ class FilmRepositoryTest {
 
         assertNotNull(movieEntities)
         assertEquals(movieResponse.id, movieEntities.id)
+        assertEquals(movieResponse.title, movieEntities.title)
+        assertEquals(movieResponse.releaseDate, movieEntities.releaseDate)
+        assertEquals(movieResponse.posterPath, movieEntities.posterPath)
+        assertEquals(movieResponse.description, movieEntities.description)
     }
 
     @Test
@@ -107,5 +111,9 @@ class FilmRepositoryTest {
 
         assertNotNull(tvShowEntities)
         assertEquals(tvShowResponse.id, tvShowEntities.id)
+        assertEquals(tvShowResponse.title, tvShowEntities.title)
+        assertEquals(tvShowResponse.releaseDate, tvShowEntities.releaseDate)
+        assertEquals(tvShowResponse.posterPath, tvShowEntities.posterPath)
+        assertEquals(tvShowResponse.description, tvShowEntities.description)
     }
 }

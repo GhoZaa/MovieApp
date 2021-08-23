@@ -60,7 +60,6 @@ class DetailFilmViewModelTest {
         verify(filmObserver).onChanged(dummyMovie)
     }
 
-
     @Test
     fun getTvShow() {
         val tvShow = MutableLiveData<FilmEntity>()

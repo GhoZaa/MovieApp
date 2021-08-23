@@ -15,9 +15,6 @@ import com.ghozadev.movieapp.ui.movie.FilmAdapter
 import com.ghozadev.movieapp.ui.movie.FilmFragmentCallback
 import com.ghozadev.movieapp.viewmodel.ViewModelFactory
 
-/**
- * A simple [Fragment] subclass.
- */
 class TvShowFragment : Fragment(), FilmFragmentCallback {
     private lateinit var fragmentTvShowBinding: FragmentTvShowBinding
 
@@ -39,7 +36,7 @@ class TvShowFragment : Fragment(), FilmFragmentCallback {
             val filmAdapter = FilmAdapter(this)
 
             fragmentTvShowBinding.progressBar.visibility = View.VISIBLE
-            viewModel.getTvShow().observe(this, { tvShows ->
+            viewModel.getTvShow().observe(viewLifecycleOwner, { tvShows ->
                 fragmentTvShowBinding.progressBar.visibility = View.GONE
                 filmAdapter.setFilms(tvShows)
                 filmAdapter.notifyDataSetChanged()

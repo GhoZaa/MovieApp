@@ -13,9 +13,6 @@ import com.ghozadev.movieapp.data.FilmEntity
 import com.ghozadev.movieapp.databinding.FragmentMovieBinding
 import com.ghozadev.movieapp.viewmodel.ViewModelFactory
 
-/**
- * A simple [Fragment] subclass.
- */
 class MovieFragment : Fragment(), FilmFragmentCallback {
     private lateinit var fragmentMovieBinding: FragmentMovieBinding
 
@@ -37,7 +34,7 @@ class MovieFragment : Fragment(), FilmFragmentCallback {
             val filmAdapter = FilmAdapter(this)
 
             fragmentMovieBinding.progressBar.visibility = View.VISIBLE
-            viewModel.getMovies().observe(this, { movies ->
+            viewModel.getMovies().observe(viewLifecycleOwner, { movies ->
                 fragmentMovieBinding.progressBar.visibility = View.GONE
                 filmAdapter.setFilms(movies)
                 filmAdapter.notifyDataSetChanged()

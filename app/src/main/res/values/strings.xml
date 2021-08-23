@@ -10,4 +10,5 @@
     <string name="text_date">Release Date</string>
     <string name="release_date">Release: %s</string>
     <string name="share_text">Share the %s films </string>
+    <string name="iv_poster_explain">Poster Film</string>
 </resources>

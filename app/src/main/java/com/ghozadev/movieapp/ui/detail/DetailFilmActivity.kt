@@ -15,13 +15,6 @@ import com.ghozadev.movieapp.viewmodel.ViewModelFactory
 
 class DetailFilmActivity : AppCompatActivity() {
 
-    companion object {
-        const val EXTRA_FILM = "extra_film"
-        const val EXTRA_TYPE = "extra_type"
-        const val TYPE_MOVIE = "TYPE_MOVIE"
-        const val TYPE_TV_SHOW = "TYPE_TV_SHOW"
-    }
-
     private lateinit var detailContentBinding: ContentDetailFilmBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,17 +49,26 @@ class DetailFilmActivity : AppCompatActivity() {
     }
 
     private fun populateFilm(filmEntity: FilmEntity) {
-        detailContentBinding.textTitle.text = filmEntity.title
-        detailContentBinding.textDescription.text = filmEntity.description
-        detailContentBinding.textReleaseDate.text = filmEntity.releaseDate
+        with(detailContentBinding) {
+            textTitle.text = filmEntity.title
+            textDescription.text = filmEntity.description
+            textReleaseDate.text = filmEntity.releaseDate
 
-        Glide.with(this)
-            .load("https://image.tmdb.org/t/p/w185/" + filmEntity.posterPath)
-            .transform(RoundedCorners(20))
-            .apply(
-                RequestOptions.placeholderOf(R.drawable.ic_loading)
-                .error(R.drawable.ic_error))
-            .into(detailContentBinding.imagePoster)
+            Glide.with(this@DetailFilmActivity)
+                .load("https://image.tmdb.org/t/p/w185/" + filmEntity.posterPath)
+                .transform(RoundedCorners(20))
+                .apply(
+                    RequestOptions.placeholderOf(R.drawable.ic_loading)
+                        .error(R.drawable.ic_error))
+                .into(imagePoster)
+        }
+    }
+
+    companion object {
+        const val EXTRA_FILM = "extra_film"
+        const val EXTRA_TYPE = "extra_type"
+        const val TYPE_MOVIE = "TYPE_MOVIE"
+        const val TYPE_TV_SHOW = "TYPE_TV_SHOW"
     }
 
 }
