@@ -53,7 +53,7 @@ class RemoteDataSource constructor(private val catalogApiService: ApiService){
 //        }
 //    }
 
-    suspend fun getPopularTvShows(): MutableLiveData<ApiResponse<List<TvShowResponse>>> {
+    fun getPopularTvShows(): MutableLiveData<ApiResponse<List<TvShowResponse>>> {
         EspressoIdlingResource.increment()
         val resultTvShowResponse = MutableLiveData<ApiResponse<List<TvShowResponse>>>()
         CoroutineScope(Dispatchers.IO).launch {

@@ -1,19 +1,20 @@
 package com.ghozadev.movieapp.data.source.local
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import com.ghozadev.movieapp.data.source.local.entity.MovieEntity
 import com.ghozadev.movieapp.data.source.local.entity.TvShowEntity
 import com.ghozadev.movieapp.data.source.local.room.FilmDao
 
 class LocalDataSource private constructor(private val mFilmDao: FilmDao) {
 
-    fun getListMovies() : LiveData<List<MovieEntity>> = mFilmDao.getListMovies()
+    fun getListMovies() : DataSource.Factory<Int, MovieEntity> = mFilmDao.getListMovies()
 
-    fun getListFavoriteMovies() : LiveData<List<MovieEntity>> = mFilmDao.getListFavoriteMovies()
+    fun getFavoriteMovies() : DataSource.Factory<Int, MovieEntity> = mFilmDao.getListFavoriteMovies()
 
-    fun getListTvShows() : LiveData<List<TvShowEntity>> = mFilmDao.getListTvShows()
+    fun getListTvShows() : DataSource.Factory<Int, TvShowEntity> = mFilmDao.getListTvShows()
 
-    fun getListFavoriteTvShows() : LiveData<List<TvShowEntity>> = mFilmDao.getListFavoriteTvShows()
+    fun getFavoriteTvShows() : DataSource.Factory<Int, TvShowEntity> = mFilmDao.getListFavoriteTvShows()
 
     fun getDetailMovie(movieId: Int) : LiveData<MovieEntity> = mFilmDao.getDetailMovieById(movieId)
 

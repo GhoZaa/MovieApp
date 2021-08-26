@@ -1,6 +1,7 @@
 package com.ghozadev.movieapp.data.source.local.room
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.room.*
 import com.ghozadev.movieapp.data.source.local.entity.MovieEntity
 import com.ghozadev.movieapp.data.source.local.entity.TvShowEntity
@@ -9,16 +10,16 @@ import com.ghozadev.movieapp.data.source.local.entity.TvShowEntity
 interface FilmDao {
 
     @Query("SELECT * FROM movieEntities")
-    fun getListMovies() : LiveData<List<MovieEntity>>
+    fun getListMovies() : DataSource.Factory<Int, MovieEntity>
 
     @Query("SELECT * FROM tvShowEntities")
-    fun getListTvShows() : LiveData<List<TvShowEntity>>
+    fun getListTvShows() : DataSource.Factory<Int, TvShowEntity>
 
     @Query("SELECT * FROM movieEntities WHERE isFavorite = 1")
-    fun getListFavoriteMovies() : LiveData<List<MovieEntity>>
+    fun getListFavoriteMovies() : DataSource.Factory<Int, MovieEntity>
 
     @Query("SELECT * FROM tvShowEntities WHERE isFavorite = 1")
-    fun getListFavoriteTvShows() : LiveData<List<TvShowEntity>>
+    fun getListFavoriteTvShows() : DataSource.Factory<Int, TvShowEntity>
 
     @Query("SELECT * FROM movieEntities WHERE movieId = :movieId")
     fun getDetailMovieById(movieId: Int) : LiveData<MovieEntity>
