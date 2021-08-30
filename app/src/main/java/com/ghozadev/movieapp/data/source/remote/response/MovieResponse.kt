@@ -5,17 +5,17 @@ import com.google.gson.annotations.SerializedName
 data class MovieResponse(
 
 	@field:SerializedName("id")
-	val id: Int,
+	val id: Int = 0,
 
 	@field:SerializedName("title")
-	val title: String,
+	val title: String? = null,
 
 	@field:SerializedName("poster_path")
-	val posterPath: String,
+	val posterPath: String? = null,
 
 	@field:SerializedName("release_date")
-	val releaseDate: String,
+	val releaseDate: String? = null,
 
 	@field:SerializedName("overview")
-	val description: String
+	val description: String? = null
 )

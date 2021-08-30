@@ -3,7 +3,6 @@ package com.ghozadev.movieapp.ui.detail
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.ghozadev.movieapp.data.FilmEntity
 import com.ghozadev.movieapp.data.FilmRepository
 import com.ghozadev.movieapp.utils.DataDummy
 import com.nhaarman.mockitokotlin2.verify

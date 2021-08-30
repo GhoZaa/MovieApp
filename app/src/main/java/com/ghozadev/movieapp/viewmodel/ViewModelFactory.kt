@@ -3,23 +3,13 @@ package com.ghozadev.movieapp.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.ghozadev.movieapp.data.FilmRepository
-import com.ghozadev.movieapp.di.Injection
 import com.ghozadev.movieapp.ui.detail.DetailFilmViewModel
+import com.ghozadev.movieapp.ui.favorite.FavoriteViewModel
 import com.ghozadev.movieapp.ui.movie.MovieViewModel
 import com.ghozadev.movieapp.ui.tvshow.TvShowViewModel
+import javax.inject.Inject
 
-class ViewModelFactory private constructor(private val mFilmRepository: FilmRepository): ViewModelProvider.NewInstanceFactory() {
-
-    companion object {
-        @Volatile
-        private var instance: ViewModelFactory? = null
-
-        fun getInstance(): ViewModelFactory = instance ?: synchronized(this) {
-            instance ?: ViewModelFactory(Injection.provideFilmRepository()).apply {
-                instance = this
-            }
-        }
-    }
+class ViewModelFactory @Inject constructor(private val mFilmRepository: FilmRepository): ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -32,6 +22,9 @@ class ViewModelFactory private constructor(private val mFilmRepository: FilmRepo
             }
             modelClass.isAssignableFrom(DetailFilmViewModel::class.java) -> {
                 DetailFilmViewModel(mFilmRepository) as T
+            }
+            modelClass.isAssignableFrom(FavoriteViewModel::class.java) -> {
+                FavoriteViewModel(mFilmRepository) as T
             }
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }

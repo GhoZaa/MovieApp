@@ -21,16 +21,6 @@ class FilmRepository @Inject constructor(
     private val localDataSource: LocalDataSource
     ) : FilmDataSource {
 
-//    companion object {
-//        @Volatile
-//        private var instance: FilmRepository? = null
-//
-//        fun getInstance(remoteData: RemoteDataSource): FilmRepository =
-//            instance ?: synchronized(this) {
-//                instance ?: FilmRepository(remoteData).apply { instance = this }
-//            }
-//    }
-
     override fun getPopularMovies(): LiveData<Resource<PagedList<MovieEntity>>> {
         return object : NetworkBoundResource<PagedList<MovieEntity>, List<MovieResponse>>() {
             public override fun loadFromDB(): LiveData<PagedList<MovieEntity>> {

@@ -5,8 +5,9 @@ import androidx.paging.DataSource
 import com.ghozadev.movieapp.data.source.local.entity.MovieEntity
 import com.ghozadev.movieapp.data.source.local.entity.TvShowEntity
 import com.ghozadev.movieapp.data.source.local.room.FilmDao
+import javax.inject.Inject
 
-class LocalDataSource private constructor(private val mFilmDao: FilmDao) {
+class LocalDataSource @Inject constructor(private val mFilmDao: FilmDao) {
 
     fun getListMovies() : DataSource.Factory<Int, MovieEntity> = mFilmDao.getListMovies()
 
@@ -32,14 +33,5 @@ class LocalDataSource private constructor(private val mFilmDao: FilmDao) {
     fun setFavoriteTvShow(tvShow : TvShowEntity) {
         tvShow.isFavorite = !tvShow.isFavorite
         mFilmDao.updateTvShow(tvShow)
-    }
-
-    companion object {
-        private var INSTANCE: LocalDataSource? = null
-
-        fun getInstance(filmDao: FilmDao): LocalDataSource =
-            INSTANCE ?: LocalDataSource(filmDao).apply {
-                INSTANCE = this
-            }
     }
 }

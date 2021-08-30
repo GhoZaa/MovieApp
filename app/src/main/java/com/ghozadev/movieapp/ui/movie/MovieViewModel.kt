@@ -2,10 +2,13 @@ package com.ghozadev.movieapp.ui.movie
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.ghozadev.movieapp.data.FilmEntity
+import androidx.paging.PagedList
 import com.ghozadev.movieapp.data.FilmRepository
+import com.ghozadev.movieapp.data.source.local.entity.MovieEntity
+import com.ghozadev.movieapp.vo.Resource
+import javax.inject.Inject
 
-class MovieViewModel(private val filmRepository: FilmRepository): ViewModel() {
+class MovieViewModel @Inject constructor(private val filmRepository: FilmRepository): ViewModel() {
 
-    fun getMovies(): LiveData<List<FilmEntity>> = filmRepository.getPopularMovies()
+    fun getMovies(): LiveData<Resource<PagedList<MovieEntity>>> = filmRepository.getPopularMovies()
 }

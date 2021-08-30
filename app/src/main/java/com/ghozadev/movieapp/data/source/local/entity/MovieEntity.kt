@@ -34,5 +34,4 @@ data class MovieEntity(
     @NonNull
     @ColumnInfo(name = "isFavorite")
     var isFavorite: Boolean = false
-
 ) : Parcelable

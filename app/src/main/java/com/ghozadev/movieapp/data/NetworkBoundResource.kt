@@ -1,6 +1,5 @@
 package com.ghozadev.movieapp.data
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.ghozadev.movieapp.data.source.remote.ApiResponse
@@ -56,8 +55,6 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
                 StatusResponse.SUCCESS ->
                     CoroutineScope(Dispatchers.IO).launch {
                         response.body?.let { saveCallResult(it) }
-                        Log.d("BOUND 1 : ", response.status.name)
-
                         withContext(Dispatchers.Main) {
                             result.addSource(loadFromDB()) { newData ->
                                 result.value = Resource.success(newData)

@@ -1,22 +1,29 @@
 package com.ghozadev.movieapp.ui.tvshow
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.app.ShareCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ghozadev.movieapp.R
-import com.ghozadev.movieapp.data.FilmEntity
+import com.ghozadev.movieapp.data.source.local.entity.TvShowEntity
 import com.ghozadev.movieapp.databinding.FragmentTvShowBinding
-import com.ghozadev.movieapp.ui.movie.FilmAdapter
-import com.ghozadev.movieapp.ui.movie.FilmFragmentCallback
+import com.ghozadev.movieapp.ui.detail.DetailFilmActivity
 import com.ghozadev.movieapp.viewmodel.ViewModelFactory
+import com.ghozadev.movieapp.vo.Status
+import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
-class TvShowFragment : Fragment(), FilmFragmentCallback {
+class TvShowFragment : DaggerFragment(), TvShowFragmentCallback {
     private lateinit var fragmentTvShowBinding: FragmentTvShowBinding
+    private lateinit var tvShowViewModel: TvShowViewModel
+
+    @Inject
+    lateinit var factory: ViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,37 +36,58 @@ class TvShowFragment : Fragment(), FilmFragmentCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (activity != null) {
-            val factory = ViewModelFactory.getInstance()
-            val viewModel = ViewModelProvider(this, factory)[TvShowViewModel::class.java]
-
-            val filmAdapter = FilmAdapter(this)
-
-            fragmentTvShowBinding.progressBar.visibility = View.VISIBLE
-            viewModel.getTvShow().observe(viewLifecycleOwner, { tvShows ->
-                fragmentTvShowBinding.progressBar.visibility = View.GONE
-                filmAdapter.setFilms(tvShows)
-                filmAdapter.notifyDataSetChanged()
-            })
-
-            with(fragmentTvShowBinding.rvTvShow) {
-                layoutManager = LinearLayoutManager(context)
-                setHasFixedSize(true)
-                adapter = filmAdapter
-            }
+        with(fragmentTvShowBinding.rvTvShow) {
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+            adapter = TvShowAdapter(this@TvShowFragment)
         }
+
+        activity?.let {
+            tvShowViewModel = ViewModelProvider(it, factory)[TvShowViewModel::class.java]
+        }
+
+        tvShowViewModel.getTvShow().observe(viewLifecycleOwner, { tvShows ->
+            if (tvShows != null) {
+                when (tvShows.status) {
+                    Status.LOADING -> fragmentTvShowBinding.progressBar.visibility = View.VISIBLE
+                    Status.SUCCESS -> {
+                        fragmentTvShowBinding.progressBar.visibility = View.GONE
+                        fragmentTvShowBinding.rvTvShow.adapter?.let { adapter ->
+                            when (adapter) {
+                                is TvShowAdapter -> {
+                                    adapter.submitList(tvShows.data)
+                                    adapter.notifyDataSetChanged()
+                                }
+                            }
+                        }
+                    }
+                    Status.ERROR -> {
+                        fragmentTvShowBinding.progressBar.visibility = View.GONE
+                        Toast.makeText(context, "Error connection to internet", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        })
     }
 
-    override fun onShareClick(film: FilmEntity) {
+    override fun onShareClick(data: TvShowEntity) {
         if (activity != null) {
             val mimeType = "text/plain"
             ShareCompat.IntentBuilder
                     .from(requireActivity())
                     .setType(mimeType)
                     .setChooserTitle("Share this application now")
-                    .setText(resources.getString(R.string.share_text, film.title))
+                    .setText(resources.getString(R.string.share_text, data.title))
                     .startChooser()
         }
+    }
+
+    override fun onItemClicked(data: TvShowEntity) {
+        startActivity(
+            Intent(context, DetailFilmActivity::class.java)
+                .putExtra(DetailFilmActivity.EXTRA_FILM, data.tvShowId)
+                .putExtra(DetailFilmActivity.EXTRA_TYPE, DetailFilmActivity.TYPE_TV_SHOW)
+        )
     }
 
 }

@@ -14,4 +14,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_favorite">Favorite List</string>
+    <string name="fab_description">Add to favorite list or remove from favorite list</string>
+    <string name="iv_empty_list_description">Favorite list is empty</string>
+    <string name="favorite_list_empty_title">Favorite list is empty</string>
+    <string name="favorite_list_empty_desc">No films have been added so far!</string>
 </resources>
