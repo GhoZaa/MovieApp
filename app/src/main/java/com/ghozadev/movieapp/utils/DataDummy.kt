@@ -21,10 +21,10 @@ object DataDummy {
         movies.add(MovieEntity(
             2,
             2,
-            "F9",
-            "/bOFaAXmWWXC3Rbv4u4uM9ZSzRXP.jpg",
-            "2021-05-19",
-            "Dominic Toretto and his crew battle the most skilled assassin and high-performance driver they've ever encountered: his forsaken brother.",
+            "The Suicide Squad",
+            "/iXbWpCkIauBMStSTUT9v4GXvdgH.jpg",
+            "2021-07-28",
+            "Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.",
             false
             ))
         movies.add(MovieEntity(

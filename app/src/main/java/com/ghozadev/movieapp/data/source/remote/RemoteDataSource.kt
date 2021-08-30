@@ -57,20 +57,4 @@ class RemoteDataSource @Inject constructor(private val catalogApiService: ApiSer
         return resultTvShowResponse
     }
 
-    interface LoadPopularMoviesCallback {
-        fun onAllMoviesReceived(movieResponse: List<MovieResponse>)
-    }
-
-    interface LoadMovieDetailCallback {
-        fun onMovieDetailReceived(movieResponse: MovieResponse)
-    }
-
-    interface LoadPopularTvShowsCallback {
-        fun onAllTvShowReceived(tvShowResponse: List<TvShowResponse>)
-    }
-
-    interface LoadTvShowDetailCallback {
-        fun onTvShowDetailReceived(tvShowResponse: TvShowResponse)
-    }
-
 }
