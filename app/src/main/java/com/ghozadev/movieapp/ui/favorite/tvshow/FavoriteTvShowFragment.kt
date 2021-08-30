@@ -52,7 +52,7 @@ class FavoriteTvShowFragment : DaggerFragment(), TvShowFragmentCallback {
             viewModel = ViewModelProvider(it, factory)[FavoriteViewModel::class.java]
         }
 
-        viewModel.getFavoriteTvShow().observe(viewLifecycleOwner, { tvShows ->
+        viewModel.getFavoriteTvShows().observe(viewLifecycleOwner, { tvShows ->
             if (tvShows != null) {
                 binding?.rvFavoriteTvShow?.adapter?.let { adapter ->
                     when (adapter) {

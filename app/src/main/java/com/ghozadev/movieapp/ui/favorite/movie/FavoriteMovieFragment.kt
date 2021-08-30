@@ -52,7 +52,7 @@ class FavoriteMovieFragment : DaggerFragment(), MovieFragmentCallback {
             viewModel = ViewModelProvider(it, factory)[FavoriteViewModel::class.java]
         }
 
-        viewModel.getFavoriteMovie().observe(viewLifecycleOwner, { movies ->
+        viewModel.getFavoriteMovies().observe(viewLifecycleOwner, { movies ->
             if (movies != null) {
                 binding?.rvFavoriteMovie?.adapter?.let { adapter ->
                     when (adapter) {

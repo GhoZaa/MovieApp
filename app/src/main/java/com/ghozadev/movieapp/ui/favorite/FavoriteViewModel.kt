@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class FavoriteViewModel @Inject constructor(private val filmRepository: FilmRepository) : ViewModel() {
 
-    fun getFavoriteMovie(): LiveData<PagedList<MovieEntity>> = filmRepository.getFavoriteMovies()
+    fun getFavoriteMovies(): LiveData<PagedList<MovieEntity>> = filmRepository.getFavoriteMovies()
 
-    fun getFavoriteTvShow(): LiveData<PagedList<TvShowEntity>> = filmRepository.getFavoriteTvShows()
+    fun getFavoriteTvShows(): LiveData<PagedList<TvShowEntity>> = filmRepository.getFavoriteTvShows()
 }
