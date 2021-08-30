@@ -19,9 +19,9 @@
         tools:listitem="@layout/items_film" />
 
     <include
-        android:id="@+id/favorite_empty_state"
+        android:id="@+id/favorite_empty_layout"
         layout="@layout/empty_list"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.core.app.ShareCompat
 import androidx.lifecycle.ViewModelProvider
@@ -46,7 +48,7 @@ class FavoriteMovieFragment : DaggerFragment(), MovieFragmentCallback {
             this?.adapter = MovieAdapter(this@FavoriteMovieFragment)
         }
 
-        parentFragment?.let {
+        activity?.let {
             viewModel = ViewModelProvider(it, factory)[FavoriteViewModel::class.java]
         }
 
@@ -57,9 +59,14 @@ class FavoriteMovieFragment : DaggerFragment(), MovieFragmentCallback {
                         is MovieAdapter -> {
                             if (movies.isNullOrEmpty()){
                                 binding?.rvFavoriteMovie?.visibility = View.GONE
-                                binding?.favoriteEmptyLayout?.imgEmptyList?.visibility = View.VISIBLE
+                                binding?.favoriteEmptyLayout?.imgEmptyList?.visibility = VISIBLE
+                                binding?.favoriteEmptyLayout?.emptyListTitle?.visibility = VISIBLE
+                                binding?.favoriteEmptyLayout?.emptyListDesc?.visibility = VISIBLE
                             } else {
-                                binding?.rvFavoriteMovie?.visibility = View.VISIBLE
+                                binding?.favoriteEmptyLayout?.imgEmptyList?.visibility = INVISIBLE
+                                binding?.favoriteEmptyLayout?.emptyListTitle?.visibility = INVISIBLE
+                                binding?.favoriteEmptyLayout?.emptyListDesc?.visibility = INVISIBLE
+                                binding?.rvFavoriteMovie?.visibility = VISIBLE
                                 adapter.submitList(movies)
                                 adapter.notifyDataSetChanged()
                             }

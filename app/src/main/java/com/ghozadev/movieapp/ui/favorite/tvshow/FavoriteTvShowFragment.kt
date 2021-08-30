@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.core.app.ShareCompat
 import androidx.lifecycle.ViewModelProvider
@@ -21,8 +23,8 @@ import javax.inject.Inject
 
 class FavoriteTvShowFragment : DaggerFragment(), TvShowFragmentCallback {
 
-    private lateinit var fragmentFavoriteTvShowBinding: FragmentFavoriteTvShowBinding
-//    private val binding get() = _fragmentFavoriteTvShowBinding
+    private var _fragmentFavoriteTvShowBinding: FragmentFavoriteTvShowBinding? = null
+    private val binding get() = _fragmentFavoriteTvShowBinding
 
     private lateinit var viewModel: FavoriteViewModel
 
@@ -32,34 +34,39 @@ class FavoriteTvShowFragment : DaggerFragment(), TvShowFragmentCallback {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        fragmentFavoriteTvShowBinding = FragmentFavoriteTvShowBinding.inflate(layoutInflater, container, false)
-        return fragmentFavoriteTvShowBinding.root
+    ): View? {
+        _fragmentFavoriteTvShowBinding = FragmentFavoriteTvShowBinding.inflate(layoutInflater, container, false)
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(fragmentFavoriteTvShowBinding.rvFavoriteTvShow) {
-            layoutManager = LinearLayoutManager(context)
-            setHasFixedSize(true)
-            adapter = TvShowAdapter(this@FavoriteTvShowFragment)
+        with(binding?.rvFavoriteTvShow) {
+            this?.layoutManager = LinearLayoutManager(context)
+            this?.setHasFixedSize(true)
+            this?.adapter = TvShowAdapter(this@FavoriteTvShowFragment)
         }
 
-        parentFragment?.let {
+        activity?.let {
             viewModel = ViewModelProvider(it, factory)[FavoriteViewModel::class.java]
         }
 
         viewModel.getFavoriteTvShow().observe(viewLifecycleOwner, { tvShows ->
             if (tvShows != null) {
-                fragmentFavoriteTvShowBinding.rvFavoriteTvShow.adapter?.let { adapter ->
+                binding?.rvFavoriteTvShow?.adapter?.let { adapter ->
                     when (adapter) {
                         is TvShowAdapter -> {
                             if (tvShows.isNullOrEmpty()){
-                                fragmentFavoriteTvShowBinding.rvFavoriteTvShow.visibility = View.GONE
-                                fragmentFavoriteTvShowBinding.favoriteEmptyState.imgEmptyList.visibility = View.VISIBLE
+                                binding?.rvFavoriteTvShow?.visibility = View.GONE
+                                binding?.favoriteEmptyLayout?.imgEmptyList?.visibility = VISIBLE
+                                binding?.favoriteEmptyLayout?.emptyListTitle?.visibility = VISIBLE
+                                binding?.favoriteEmptyLayout?.emptyListDesc?.visibility = VISIBLE
                             } else {
-                                fragmentFavoriteTvShowBinding.rvFavoriteTvShow.visibility = View.VISIBLE
+                                binding?.rvFavoriteTvShow?.visibility = VISIBLE
+                                binding?.favoriteEmptyLayout?.imgEmptyList?.visibility = INVISIBLE
+                                binding?.favoriteEmptyLayout?.emptyListTitle?.visibility = INVISIBLE
+                                binding?.favoriteEmptyLayout?.emptyListDesc?.visibility = INVISIBLE
                                 adapter.submitList(tvShows)
                                 adapter.notifyDataSetChanged()
                             }

@@ -18,4 +18,5 @@
     <string name="iv_empty_list_description">Favorite list is empty</string>
     <string name="favorite_list_empty_title">Favorite list is empty</string>
     <string name="favorite_list_empty_desc">No films have been added so far!</string>
+    <string name="text_favorite_null">No films have been addes so far</string>
 </resources>

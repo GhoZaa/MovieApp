@@ -1,5 +1,6 @@
 package com.ghozadev.movieapp.ui.detail
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
@@ -11,6 +12,7 @@ import com.ghozadev.movieapp.data.source.local.entity.MovieEntity
 import com.ghozadev.movieapp.data.source.local.entity.TvShowEntity
 import com.ghozadev.movieapp.databinding.ActivityDetailFilmBinding
 import com.ghozadev.movieapp.databinding.ContentDetailFilmBinding
+import com.ghozadev.movieapp.ui.favorite.FavoriteActivity
 import com.ghozadev.movieapp.viewmodel.ViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerAppCompatActivity
@@ -110,7 +112,12 @@ class DetailFilmActivity : DaggerAppCompatActivity() {
     }
 
     private fun showSnackBar(msg: String) {
-        Snackbar.make(findViewById(android.R.id.content), msg, Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(findViewById(android.R.id.content), msg, Snackbar.LENGTH_SHORT)
+            .setAction("View") {
+                val mIntent = Intent(this, FavoriteActivity::class.java)
+                startActivity(mIntent)
+            }
+            .show()
     }
 
     companion object {

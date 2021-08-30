@@ -1,7 +1,9 @@
 package com.ghozadev.movieapp.di
 
 import com.ghozadev.movieapp.di.home.HomeFragmentBuildersModule
+import com.ghozadev.movieapp.di.home.favorite.FavoriteFragmentBuildersModule
 import com.ghozadev.movieapp.ui.detail.DetailFilmActivity
+import com.ghozadev.movieapp.ui.favorite.FavoriteActivity
 import com.ghozadev.movieapp.ui.home.HomeActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -14,4 +16,7 @@ abstract class ActivityBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeDetailFilmActivity(): DetailFilmActivity
+
+    @ContributesAndroidInjector(modules = [FavoriteFragmentBuildersModule::class])
+    abstract fun contributeFavoriteActivity(): FavoriteActivity
 }
