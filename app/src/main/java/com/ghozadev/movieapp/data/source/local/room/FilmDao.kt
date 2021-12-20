@@ -9,11 +9,17 @@ import com.ghozadev.movieapp.data.source.local.entity.TvShowEntity
 @Dao
 interface FilmDao {
 
-    @Query("SELECT * FROM movieEntities")
+    @Query("SELECT * FROM movieEntities LIMIT 10")
     fun getListMovies() : DataSource.Factory<Int, MovieEntity>
 
-    @Query("SELECT * FROM tvShowEntities")
+    @Query("SELECT * FROM movieEntities WHERE title LIKE '%' || :movieTitle || '%'")
+    fun getListMovieSearch(movieTitle: String) : DataSource.Factory<Int, MovieEntity>
+
+    @Query("SELECT * FROM tvShowEntities LIMIT 10")
     fun getListTvShows() : DataSource.Factory<Int, TvShowEntity>
+
+    @Query("SELECT * FROM tvShowEntities WHERE title LIKE '%' || :tvShowTitle || '%'")
+    fun getListTvShowSearch(tvShowTitle: String) : DataSource.Factory<Int, TvShowEntity>
 
     @Query("SELECT * FROM movieEntities WHERE isFavorite = 1")
     fun getListFavoriteMovies() : DataSource.Factory<Int, MovieEntity>

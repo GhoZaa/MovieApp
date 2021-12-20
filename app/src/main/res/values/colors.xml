@@ -9,4 +9,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="placeholder">#6FB6B6B6</color>
     <color name="accentColor">#FF5252</color>
+
+    <color name="primary">#032541</color>
+    <color name="primary_dark">#00001b</color>
+    <color name="secondary">#d3c9b7</color>
+    <color name="secondary_dark">#a29887</color>
+    <color name="text_on_primary">#fafafa</color>
 </resources>

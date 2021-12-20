@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.app.ShareCompat
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +14,7 @@ import com.ghozadev.movieapp.R
 import com.ghozadev.movieapp.data.source.local.entity.TvShowEntity
 import com.ghozadev.movieapp.databinding.FragmentTvShowBinding
 import com.ghozadev.movieapp.ui.detail.DetailFilmActivity
+import com.ghozadev.movieapp.ui.movie.MovieAdapter
 import com.ghozadev.movieapp.viewmodel.ViewModelFactory
 import com.ghozadev.movieapp.vo.Status
 import dagger.android.support.DaggerFragment
@@ -46,26 +48,40 @@ class TvShowFragment : DaggerFragment(), TvShowFragmentCallback {
             tvShowViewModel = ViewModelProvider(it, factory)[TvShowViewModel::class.java]
         }
 
-        tvShowViewModel.getTvShow().observe(viewLifecycleOwner, { tvShows ->
-            if (tvShows != null) {
-                when (tvShows.status) {
-                    Status.LOADING -> fragmentTvShowBinding.progressBar.visibility = View.VISIBLE
-                    Status.SUCCESS -> {
-                        fragmentTvShowBinding.progressBar.visibility = View.GONE
-                        fragmentTvShowBinding.rvTvShow.adapter?.let { adapter ->
-                            when (adapter) {
-                                is TvShowAdapter -> {
-                                    adapter.submitList(tvShows.data)
-                                    adapter.notifyDataSetChanged()
+        loadPopularTvShows()
+
+        fragmentTvShowBinding.searchTvShow.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                Toast.makeText(context, query, Toast.LENGTH_SHORT).show()
+                tvShowViewModel.getSearchTvShow(query).observe(viewLifecycleOwner, { tvShows ->
+                    if (tvShows != null) {
+                        when (tvShows.status) {
+                            Status.LOADING -> fragmentTvShowBinding.progressBar.visibility = View.VISIBLE
+                            Status.SUCCESS -> {
+                                fragmentTvShowBinding.progressBar.visibility = View.GONE
+                                fragmentTvShowBinding.rvTvShow.adapter?.let { adapter ->
+                                    when (adapter) {
+                                        is TvShowAdapter -> {
+                                            adapter.submitList(tvShows.data)
+                                            adapter.notifyDataSetChanged()
+                                        }
+                                    }
                                 }
+                            }
+                            Status.ERROR -> {
+                                fragmentTvShowBinding.progressBar.visibility = View.GONE
+                                Toast.makeText(context, "Error connection to internet", Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
-                    Status.ERROR -> {
-                        fragmentTvShowBinding.progressBar.visibility = View.GONE
-                        Toast.makeText(context, "Error connection to internet", Toast.LENGTH_SHORT).show()
-                    }
-                }
+                })
+
+                return true
+            }
+
+            override fun onQueryTextChange(query: String): Boolean {
+                loadPopularTvShows()
+                return true
             }
         })
     }
@@ -88,6 +104,31 @@ class TvShowFragment : DaggerFragment(), TvShowFragmentCallback {
                 .putExtra(DetailFilmActivity.EXTRA_FILM, data.tvShowId)
                 .putExtra(DetailFilmActivity.EXTRA_TYPE, DetailFilmActivity.TYPE_TV_SHOW)
         )
+    }
+
+    private fun loadPopularTvShows() {
+        tvShowViewModel.getTvShow().observe(viewLifecycleOwner, { tvShows ->
+            if (tvShows != null) {
+                when (tvShows.status) {
+                    Status.LOADING -> fragmentTvShowBinding.progressBar.visibility = View.VISIBLE
+                    Status.SUCCESS -> {
+                        fragmentTvShowBinding.progressBar.visibility = View.GONE
+                        fragmentTvShowBinding.rvTvShow.adapter?.let { adapter ->
+                            when (adapter) {
+                                is TvShowAdapter -> {
+                                    adapter.submitList(tvShows.data)
+                                    adapter.notifyDataSetChanged()
+                                }
+                            }
+                        }
+                    }
+                    Status.ERROR -> {
+                        fragmentTvShowBinding.progressBar.visibility = View.GONE
+                        Toast.makeText(context, "Error connection to internet", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        })
     }
 
 }

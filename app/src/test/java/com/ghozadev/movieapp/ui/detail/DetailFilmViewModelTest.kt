@@ -51,7 +51,7 @@ class DetailFilmViewModelTest {
         movie.value = dummyMovie
 
         `when`(filmRepository.getMovieDetail(movieId)).thenReturn(movie)
-        val movieEntity = viewModel.getMovie(movieId).value as MovieEntity
+        val movieEntity = viewModel.getDetailMovie(movieId).value as MovieEntity
         verify(filmRepository).getMovieDetail(movieId)
         assertNotNull(movieEntity)
         assertEquals(dummyMovie.id, movieEntity.id)
@@ -60,7 +60,7 @@ class DetailFilmViewModelTest {
         assertEquals(dummyMovie.releaseDate, movieEntity.releaseDate)
         assertEquals(dummyMovie.description, movieEntity.description)
 
-        viewModel.getMovie(movieId).observeForever(movieObserver)
+        viewModel.getDetailMovie(movieId).observeForever(movieObserver)
         verify(movieObserver).onChanged(dummyMovie)
     }
 
@@ -70,7 +70,7 @@ class DetailFilmViewModelTest {
         tvShow.value = dummyTvShow
 
         `when`(filmRepository.getTvShowDetail(tvShowId)).thenReturn(tvShow)
-        val tvShowEntity = viewModel.getTvShow(tvShowId).value as TvShowEntity
+        val tvShowEntity = viewModel.getDetailTvShow(tvShowId).value as TvShowEntity
         verify(filmRepository).getTvShowDetail(tvShowId)
         assertNotNull(tvShowEntity)
         assertEquals(dummyTvShow.id, tvShowEntity.id)
@@ -79,7 +79,7 @@ class DetailFilmViewModelTest {
         assertEquals(dummyTvShow.releaseDate, tvShowEntity.releaseDate)
         assertEquals(dummyTvShow.description, tvShowEntity.description)
 
-        viewModel.getTvShow(tvShowId).observeForever(tvShowObserver)
+        viewModel.getDetailTvShow(tvShowId).observeForever(tvShowObserver)
         verify(tvShowObserver).onChanged(dummyTvShow)
     }
 

@@ -11,4 +11,7 @@ import javax.inject.Inject
 class MovieViewModel @Inject constructor(private val filmRepository: FilmRepository): ViewModel() {
 
     fun getMovies(): LiveData<Resource<PagedList<MovieEntity>>> = filmRepository.getPopularMovies()
+
+    fun getSearchMovie(title : String): LiveData<Resource<PagedList<MovieEntity>>> =
+        filmRepository.getSearchMovie(title)
 }

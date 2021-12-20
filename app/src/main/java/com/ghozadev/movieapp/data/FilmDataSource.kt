@@ -10,9 +10,13 @@ interface FilmDataSource {
 
     fun getPopularMovies(): LiveData<Resource<PagedList<MovieEntity>>>
 
+    fun getSearchMovie(movieTitle: String): LiveData<Resource<PagedList<MovieEntity>>>
+
     fun getMovieDetail(movieId: Int): LiveData<MovieEntity>
 
     fun getPopularTvShow(): LiveData<Resource<PagedList<TvShowEntity>>>
+
+    fun getSearchTvShow(tvShowTitle: String): LiveData<Resource<PagedList<TvShowEntity>>>
 
     fun getTvShowDetail(tvShowId: Int): LiveData<TvShowEntity>
 

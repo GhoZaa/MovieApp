@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.app.ShareCompat
 import androidx.lifecycle.ViewModelProvider
@@ -47,26 +48,41 @@ class MovieFragment : DaggerFragment(), MovieFragmentCallback {
             movieViewModel = ViewModelProvider(it, factory)[MovieViewModel::class.java]
         }
 
-        movieViewModel.getMovies().observe(viewLifecycleOwner, { movies ->
-            if (movies != null) {
-                when (movies.status) {
-                    Status.LOADING -> fragmentMovieBinding.progressBar.visibility = View.VISIBLE
-                    Status.SUCCESS -> {
-                        fragmentMovieBinding.progressBar.visibility = View.GONE
-                        fragmentMovieBinding.rvMovie.adapter?.let { adapter ->
-                            when (adapter) {
-                                is MovieAdapter -> {
-                                    adapter.submitList(movies.data)
-                                    adapter.notifyDataSetChanged()
+        loadPopularFilm()
+
+        val searchMovie = fragmentMovieBinding.searchMovie
+        searchMovie.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                Toast.makeText(context, query, Toast.LENGTH_SHORT).show()
+                movieViewModel.getSearchMovie(query).observe(viewLifecycleOwner, { movies ->
+                    if (movies != null) {
+                        when (movies.status) {
+                            Status.LOADING -> fragmentMovieBinding.progressBar.visibility = View.VISIBLE
+                            Status.SUCCESS -> {
+                                fragmentMovieBinding.progressBar.visibility = View.GONE
+                                fragmentMovieBinding.rvMovie.adapter?.let { adapter ->
+                                    when (adapter) {
+                                        is MovieAdapter -> {
+                                            adapter.submitList(movies.data)
+                                            adapter.notifyDataSetChanged()
+                                        }
+                                    }
                                 }
+                            }
+                            Status.ERROR -> {
+                                fragmentMovieBinding.progressBar.visibility = View.GONE
+                                Toast.makeText(context, "Error connection to internet", Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
-                    Status.ERROR -> {
-                        fragmentMovieBinding.progressBar.visibility = View.GONE
-                        Toast.makeText(context, "Error connection to internet", Toast.LENGTH_SHORT).show()
-                    }
-                }
+                })
+
+                return true
+            }
+
+            override fun onQueryTextChange(query: String): Boolean {
+                loadPopularFilm()
+                return true
             }
         })
 
@@ -90,6 +106,31 @@ class MovieFragment : DaggerFragment(), MovieFragmentCallback {
                 .putExtra(DetailFilmActivity.EXTRA_FILM, data.movieId)
                 .putExtra(DetailFilmActivity.EXTRA_TYPE, TYPE_MOVIE)
         )
+    }
+
+    private fun loadPopularFilm() {
+        movieViewModel.getMovies().observe(viewLifecycleOwner, { movies ->
+            if (movies != null) {
+                when (movies.status) {
+                    Status.LOADING -> fragmentMovieBinding.progressBar.visibility = View.VISIBLE
+                    Status.SUCCESS -> {
+                        fragmentMovieBinding.progressBar.visibility = View.GONE
+                        fragmentMovieBinding.rvMovie.adapter?.let { adapter ->
+                            when (adapter) {
+                                is MovieAdapter -> {
+                                    adapter.submitList(movies.data)
+                                    adapter.notifyDataSetChanged()
+                                }
+                            }
+                        }
+                    }
+                    Status.ERROR -> {
+                        fragmentMovieBinding.progressBar.visibility = View.GONE
+                        Toast.makeText(context, "Error connection to internet", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        })
     }
 
 }

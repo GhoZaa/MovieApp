@@ -11,9 +11,13 @@ class LocalDataSource @Inject constructor(private val mFilmDao: FilmDao) {
 
     fun getListMovies() : DataSource.Factory<Int, MovieEntity> = mFilmDao.getListMovies()
 
+    fun getListMovieSearch(movieTitle: String) : DataSource.Factory<Int, MovieEntity> = mFilmDao.getListMovieSearch(movieTitle)
+
     fun getFavoriteMovies() : DataSource.Factory<Int, MovieEntity> = mFilmDao.getListFavoriteMovies()
 
     fun getListTvShows() : DataSource.Factory<Int, TvShowEntity> = mFilmDao.getListTvShows()
+
+    fun getListTvShowSearch(tvShowTitle: String) : DataSource.Factory<Int, TvShowEntity> = mFilmDao.getListTvShowSearch(tvShowTitle)
 
     fun getFavoriteTvShows() : DataSource.Factory<Int, TvShowEntity> = mFilmDao.getListFavoriteTvShows()
 

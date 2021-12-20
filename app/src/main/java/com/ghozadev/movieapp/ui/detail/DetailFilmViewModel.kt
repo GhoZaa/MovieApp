@@ -9,9 +9,9 @@ import javax.inject.Inject
 
 class DetailFilmViewModel @Inject constructor(private val filmRepository: FilmRepository) : ViewModel() {
 
-    fun getMovie(movieId: Int): LiveData<MovieEntity> = filmRepository.getMovieDetail(movieId)
+    fun getDetailMovie(movieId: Int): LiveData<MovieEntity> = filmRepository.getMovieDetail(movieId)
 
-    fun getTvShow(tvShowId: Int): LiveData<TvShowEntity> = filmRepository.getTvShowDetail(tvShowId)
+    fun getDetailTvShow(tvShowId: Int): LiveData<TvShowEntity> = filmRepository.getTvShowDetail(tvShowId)
 
     fun setFavoriteMovie(movie: MovieEntity) {
         filmRepository.setFavoriteMovie(movie)

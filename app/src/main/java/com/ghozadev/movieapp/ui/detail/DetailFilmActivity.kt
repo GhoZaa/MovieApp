@@ -47,13 +47,13 @@ class DetailFilmActivity : DaggerAppCompatActivity() {
 
             if (type.equals(TYPE_MOVIE, ignoreCase = true)) {
                 activityDetailFilmBinding.progressBar.visibility = View.GONE
-                viewModel.getMovie(filmId).observe(this, { film ->
+                viewModel.getDetailMovie(filmId).observe(this, { film ->
                     populateFilm(film, null)
                 })
 
             } else if (type.equals(TYPE_TV_SHOW, ignoreCase = true)) {
                 activityDetailFilmBinding.progressBar.visibility = View.GONE
-                viewModel.getTvShow(filmId).observe(this, { film ->
+                viewModel.getDetailTvShow(filmId).observe(this, { film ->
                     populateFilm(null, film)
                 })
             }
