@@ -1,20 +1,13 @@
 package com.ghozadev.movieapp.ui.detail.videos
 
-import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.ghozadev.movieapp.data.source.local.entity.MovieEntity
 import com.ghozadev.movieapp.data.source.local.entity.VideoEntity
 import com.ghozadev.movieapp.databinding.ItemsVideoBinding
-import com.ghozadev.movieapp.ui.detail.DetailFilmActivity
 import com.ghozadev.movieapp.ui.detail.DetailFilmCallback
-import com.ghozadev.movieapp.ui.movie.MovieAdapter
-import kotlinx.coroutines.withContext
 
 class VideoAdapter(private val callback: DetailFilmCallback) :
     PagedListAdapter<VideoEntity, VideoAdapter.VideoViewHolder>(DIFF_CALLBACK){

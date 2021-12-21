@@ -3,6 +3,7 @@ package com.ghozadev.movieapp.ui.detail
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +18,7 @@ import com.ghozadev.movieapp.data.source.local.entity.VideoEntity
 import com.ghozadev.movieapp.databinding.ActivityDetailFilmBinding
 import com.ghozadev.movieapp.databinding.ContentDetailFilmBinding
 import com.ghozadev.movieapp.ui.detail.videos.VideoAdapter
+import com.ghozadev.movieapp.ui.detail.videos.VideosFragment
 import com.ghozadev.movieapp.ui.favorite.FavoriteActivity
 import com.ghozadev.movieapp.viewmodel.ViewModelFactory
 import com.ghozadev.movieapp.vo.Status
@@ -24,7 +26,7 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
-class DetailFilmActivity : DaggerAppCompatActivity(), DetailFilmCallback {
+class DetailFilmActivity : DaggerAppCompatActivity() {
 
     private lateinit var detailContentBinding: ContentDetailFilmBinding
     private lateinit var viewModel: DetailFilmViewModel
@@ -40,14 +42,25 @@ class DetailFilmActivity : DaggerAppCompatActivity(), DetailFilmCallback {
 
         setContentView(activityDetailFilmBinding.root)
 
+        val mFragmentManager = supportFragmentManager
+        val mHomeFragment = VideosFragment()
+        val fragment = mFragmentManager.findFragmentByTag(VideosFragment::class.java.simpleName)
+        if (fragment !is VideosFragment) {
+            Log.d("MyFlexibleFragment", "Fragment Name :" + VideosFragment::class.java.simpleName)
+            mFragmentManager
+                .beginTransaction()
+                .add(R.id.fragment_container, mHomeFragment, VideosFragment::class.java.simpleName)
+                .commit()
+        }
+
         setSupportActionBar(activityDetailFilmBinding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        with(detailContentBinding.rvMovieVideo) {
-            layoutManager = LinearLayoutManager(context)
-            setHasFixedSize(true)
-            adapter = VideoAdapter(this@DetailFilmActivity)
-        }
+//        with(detailContentBinding.rvMovieVideo) {
+//            layoutManager = LinearLayoutManager(context)
+//            setHasFixedSize(true)
+//            adapter = VideoAdapter(this@DetailFilmActivity)
+//        }
 
         viewModel = ViewModelProvider(this@DetailFilmActivity, factory)[DetailFilmViewModel::class.java]
 
@@ -69,7 +82,10 @@ class DetailFilmActivity : DaggerAppCompatActivity(), DetailFilmCallback {
                     populateFilm(null, film)
                 })
             }
+
         }
+
+
     }
 
     private fun populateFilm(movieEntity: MovieEntity?, tvShowEntity: TvShowEntity?) {
@@ -84,29 +100,6 @@ class DetailFilmActivity : DaggerAppCompatActivity(), DetailFilmCallback {
             textTitle.text = movieEntity?.title ?: tvShowEntity?.title
             textDescription.text = movieEntity?.description ?: tvShowEntity?.description
             textReleaseDate.text = movieEntity?.releaseDate ?: tvShowEntity?.releaseDate
-
-            viewModel.getMovieVideos(filmId).observe(this@DetailFilmActivity, { videoMovies ->
-                if (videoMovies != null) {
-                    when (videoMovies.status) {
-//                        Status.LOADING -> .progressBar.visibility = View.VISIBLE
-                        Status.SUCCESS -> {
-//                            detailContentBinding.progressBar.visibility = View.GONE
-                            detailContentBinding.rvMovieVideo.adapter?.let { adapter ->
-                                when (adapter) {
-                                    is VideoAdapter -> {
-                                        adapter.submitList(videoMovies.data)
-                                        adapter.notifyDataSetChanged()
-                                    }
-                                }
-                            }
-                        }
-                        Status.ERROR -> {
-//                            detailContentBinding.progressBar.visibility = View.GONE
-                            Toast.makeText(applicationContext, "Error connection to internet", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                }
-            })
 
             btnViewOnTmdb.setOnClickListener {
                 val intent = Intent(Intent.ACTION_VIEW)
@@ -172,10 +165,10 @@ class DetailFilmActivity : DaggerAppCompatActivity(), DetailFilmCallback {
         const val TYPE_TV_SHOW = "TYPE_TV_SHOW"
     }
 
-    override fun onItemClicked(data: VideoEntity) {
-        val intent = Intent(Intent.ACTION_VIEW,
-            Uri.parse("https://www.youtube.com/watch?v=${data.key}"))
-        startActivity(intent)
-    }
+//    override fun onItemClicked(data: VideoEntity) {
+//        val intent = Intent(Intent.ACTION_VIEW,
+//            Uri.parse("https://www.youtube.com/watch?v=${data.key}"))
+//        startActivity(intent)
+//    }
 
 }
