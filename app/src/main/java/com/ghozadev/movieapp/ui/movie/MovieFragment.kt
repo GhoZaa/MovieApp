@@ -94,7 +94,7 @@ class MovieFragment : DaggerFragment(), MovieFragmentCallback {
             ShareCompat.IntentBuilder
                     .from(requireActivity())
                     .setType(mimeType)
-                    .setChooserTitle("Share this application now")
+                    .setChooserTitle("Share this film now!")
                     .setText(resources.getString(R.string.share_text, data.title))
                     .startChooser()
         }

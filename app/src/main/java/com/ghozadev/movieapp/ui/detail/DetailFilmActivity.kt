@@ -1,6 +1,7 @@
 package com.ghozadev.movieapp.ui.detail
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
@@ -63,11 +64,21 @@ class DetailFilmActivity : DaggerAppCompatActivity() {
     private fun populateFilm(movieEntity: MovieEntity?, tvShowEntity: TvShowEntity?) {
         val posterPath = movieEntity?.posterPath ?: tvShowEntity?.posterPath
         val favoriteStatus = movieEntity?.isFavorite ?: tvShowEntity?.isFavorite
+        val filmId = movieEntity?.movieId ?: tvShowEntity?.tvShowId
+        val uriStr =
+            if (movieEntity != null) "https://www.themoviedb.org/movie/$filmId"
+            else "https://www.themoviedb.org/tv/$filmId"
 
         with(detailContentBinding) {
             textTitle.text = movieEntity?.title ?: tvShowEntity?.title
             textDescription.text = movieEntity?.description ?: tvShowEntity?.description
             textReleaseDate.text = movieEntity?.releaseDate ?: tvShowEntity?.releaseDate
+
+            btnViewOnTmdb.setOnClickListener {
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse(uriStr)
+                startActivity(intent)
+            }
 
             Glide.with(this@DetailFilmActivity)
                 .load("https://image.tmdb.org/t/p/w185/$posterPath")

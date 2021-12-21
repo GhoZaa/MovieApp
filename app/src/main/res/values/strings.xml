@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Movie App</string>
+    <string name="app_name">Movie Catalog App</string>
     <string name="title_activity_detail_film">Detail Film</string>
 
     <string name="title">Title</string>
@@ -16,4 +16,5 @@
     <string name="iv_empty_list_description">Favorite list is empty</string>
     <string name="favorite_list_empty_title">Favorite list is empty</string>
     <string name="favorite_list_empty_desc">No films have been added so far!</string>
+    <string name="text_view_tmdb">View on TMDB Websites</string>
 </resources>
