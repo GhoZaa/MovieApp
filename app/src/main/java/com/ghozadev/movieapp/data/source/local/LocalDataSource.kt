@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import com.ghozadev.movieapp.data.source.local.entity.MovieEntity
 import com.ghozadev.movieapp.data.source.local.entity.TvShowEntity
+import com.ghozadev.movieapp.data.source.local.entity.VideoEntity
 import com.ghozadev.movieapp.data.source.local.room.FilmDao
 import javax.inject.Inject
 
@@ -14,6 +15,8 @@ class LocalDataSource @Inject constructor(private val mFilmDao: FilmDao) {
     fun getListMovieSearch(movieTitle: String) : DataSource.Factory<Int, MovieEntity> = mFilmDao.getListMovieSearch(movieTitle)
 
     fun getFavoriteMovies() : DataSource.Factory<Int, MovieEntity> = mFilmDao.getListFavoriteMovies()
+
+    fun getMovieVideos(filmId: Int?) : DataSource.Factory<Int, VideoEntity> = mFilmDao.getMovieVideos(filmId)
 
     fun getListTvShows() : DataSource.Factory<Int, TvShowEntity> = mFilmDao.getListTvShows()
 
@@ -26,6 +29,8 @@ class LocalDataSource @Inject constructor(private val mFilmDao: FilmDao) {
     fun getDetailTvShow(tvShowId: Int) : LiveData<TvShowEntity> = mFilmDao.getDetailTvShowById(tvShowId)
 
     fun insertMovies(movies: List<MovieEntity>) = mFilmDao.insertMovies(movies)
+
+    fun insertMovieVideos(movieVideos: List<VideoEntity>) = mFilmDao.insertMovieVideo(movieVideos)
 
     fun insertTvShows(tvShows: List<TvShowEntity>) = mFilmDao.insertTvShows(tvShows)
 

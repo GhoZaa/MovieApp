@@ -5,6 +5,7 @@ import androidx.paging.DataSource
 import androidx.room.*
 import com.ghozadev.movieapp.data.source.local.entity.MovieEntity
 import com.ghozadev.movieapp.data.source.local.entity.TvShowEntity
+import com.ghozadev.movieapp.data.source.local.entity.VideoEntity
 
 @Dao
 interface FilmDao {
@@ -14,6 +15,9 @@ interface FilmDao {
 
     @Query("SELECT * FROM movieEntities WHERE title LIKE '%' || :movieTitle || '%'")
     fun getListMovieSearch(movieTitle: String) : DataSource.Factory<Int, MovieEntity>
+
+    @Query("SELECT * FROM videoEntities WHERE filmId = :filmId")
+    fun getMovieVideos(filmId: Int?) : DataSource.Factory<Int, VideoEntity>
 
     @Query("SELECT * FROM tvShowEntities LIMIT 10")
     fun getListTvShows() : DataSource.Factory<Int, TvShowEntity>
@@ -35,6 +39,9 @@ interface FilmDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE, entity = MovieEntity::class)
     fun insertMovies(movies: List<MovieEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE, entity = VideoEntity::class)
+    fun insertMovieVideo(movies: List<VideoEntity>)
 
     @Update(entity = MovieEntity::class)
     fun updateMovie(movie : MovieEntity)

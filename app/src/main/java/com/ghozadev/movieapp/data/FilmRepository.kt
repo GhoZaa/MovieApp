@@ -6,10 +6,12 @@ import androidx.paging.PagedList
 import com.ghozadev.movieapp.data.source.local.LocalDataSource
 import com.ghozadev.movieapp.data.source.local.entity.MovieEntity
 import com.ghozadev.movieapp.data.source.local.entity.TvShowEntity
+import com.ghozadev.movieapp.data.source.local.entity.VideoEntity
 import com.ghozadev.movieapp.data.source.remote.ApiResponse
 import com.ghozadev.movieapp.data.source.remote.RemoteDataSource
 import com.ghozadev.movieapp.data.source.remote.response.MovieResponse
 import com.ghozadev.movieapp.data.source.remote.response.TvShowResponse
+import com.ghozadev.movieapp.data.source.remote.response.VideoResponse
 import com.ghozadev.movieapp.vo.Resource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
@@ -108,6 +110,41 @@ class FilmRepository @Inject constructor(
 
     override fun getMovieDetail(movieId: Int): LiveData<MovieEntity> =
         localDataSource.getDetailMovie(movieId)
+
+    override fun getMovieVideos(movieId: Int?): LiveData<Resource<PagedList<VideoEntity>>> {
+        return object : NetworkBoundResource<PagedList<VideoEntity>, List<VideoResponse>>() {
+            public override fun loadFromDB(): LiveData<PagedList<VideoEntity>> {
+                val config = PagedList.Config.Builder().apply {
+                    setEnablePlaceholders(false)
+                    setInitialLoadSizeHint(4)
+                    setPageSize(4)
+                }.build()
+                return LivePagedListBuilder(localDataSource.getMovieVideos(movieId), config).build()
+            }
+
+            override fun shouldFetch(data: PagedList<VideoEntity>?): Boolean =
+                data == null || data.isEmpty()
+
+            public override fun createCall(): LiveData<ApiResponse<List<VideoResponse>>> =
+                remoteDataSource.getMovieVideos(movieId)
+
+            public override fun saveCallResult(data: List<VideoResponse>) {
+                val videoList = ArrayList<VideoEntity>()
+                for (response in data) {
+                    val movieVideo = VideoEntity(
+                        null,
+                        movieId,
+                        response.name,
+                        response.key,
+                        response.type
+                    )
+                    videoList.add(movieVideo)
+                }
+                localDataSource.insertMovieVideos(videoList)
+            }
+
+        }.asLiveData()
+    }
 
     override fun getPopularTvShow(): LiveData<Resource<PagedList<TvShowEntity>>> {
         return object : NetworkBoundResource<PagedList<TvShowEntity>, List<TvShowResponse>>() {

@@ -17,4 +17,7 @@
     <string name="favorite_list_empty_title">Favorite list is empty</string>
     <string name="favorite_list_empty_desc">No films have been added so far!</string>
     <string name="text_view_tmdb">View on TMDB Websites</string>
+    <string name="video_title">Video Title</string>
+    <string name="video_type">Video Type</string>
+    <string name="text_video">Videos</string>
 </resources>

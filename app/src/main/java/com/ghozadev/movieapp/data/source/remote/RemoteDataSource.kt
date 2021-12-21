@@ -6,6 +6,7 @@ import com.ghozadev.movieapp.BuildConfig
 import com.ghozadev.movieapp.data.source.remote.api.ApiService
 import com.ghozadev.movieapp.data.source.remote.response.MovieResponse
 import com.ghozadev.movieapp.data.source.remote.response.TvShowResponse
+import com.ghozadev.movieapp.data.source.remote.response.VideoResponse
 import com.ghozadev.movieapp.utils.EspressoIdlingResource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -77,6 +78,27 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         }
         EspressoIdlingResource.decrement()
         return resultMovieResponse
+    }
+
+    fun getMovieVideos(filmId : Int?): LiveData<ApiResponse<List<VideoResponse>>> {
+        EspressoIdlingResource.increment()
+        val resultVideoResponse = MutableLiveData<ApiResponse<List<VideoResponse>>>()
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val response = apiService.getMovieVideos(filmId, BuildConfig.TMDB_API_KEY).await()
+                resultVideoResponse.postValue(ApiResponse.success(response.result!!))
+            } catch (e: IOException) {
+                e.printStackTrace()
+                resultVideoResponse.postValue(
+                    ApiResponse.error(
+                        e.message.toString(),
+                        mutableListOf()
+                    )
+                )
+            }
+        }
+        EspressoIdlingResource.decrement()
+        return resultVideoResponse
     }
 
     fun getSearchTvShowResult(querySearch : String): LiveData<ApiResponse<List<TvShowResponse>>> {

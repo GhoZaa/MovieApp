@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
 import com.ghozadev.movieapp.data.FilmRepository
 import com.ghozadev.movieapp.data.source.local.entity.MovieEntity
+import com.ghozadev.movieapp.data.source.local.entity.VideoEntity
 import com.ghozadev.movieapp.vo.Resource
 import javax.inject.Inject
 
