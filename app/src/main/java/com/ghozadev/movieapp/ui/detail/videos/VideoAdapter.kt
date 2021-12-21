@@ -35,18 +35,10 @@ class VideoAdapter(private val callback: DetailFilmCallback) :
                 tvItemType.text = videoEntity.type
                 tvItemName.text = videoEntity.name
                 itemView.setOnClickListener {
-//                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=${videoEntity.key}"))
-//                    intent.data = Uri.parse("https://www.youtube.com/watch?v=${videoEntity.key}")
                     callback.onItemClicked(videoEntity)
                 }
             }
         }
-
-//        private fun startActivity(key: String?) {
-//            val intent = Intent(Intent.ACTION_VIEW)
-//            intent.data = Uri.parse("https://www.youtube.com/watch?v=$key")
-//            startActivity(intent)
-//        }
 
     }
 

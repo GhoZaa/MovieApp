@@ -6,8 +6,9 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.ghozadev.movieapp.data.source.local.entity.MovieEntity
 import com.ghozadev.movieapp.data.source.local.entity.TvShowEntity
+import com.ghozadev.movieapp.data.source.local.entity.VideoEntity
 
-@Database(entities = [MovieEntity::class, TvShowEntity::class],
+@Database(entities = [MovieEntity::class, TvShowEntity::class, VideoEntity::class],
     version = 1,
     exportSchema = false)
 abstract class FilmDatabase : RoomDatabase() {

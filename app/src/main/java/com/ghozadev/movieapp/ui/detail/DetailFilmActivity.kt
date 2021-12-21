@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
@@ -17,7 +18,6 @@ import com.ghozadev.movieapp.databinding.ActivityDetailFilmBinding
 import com.ghozadev.movieapp.databinding.ContentDetailFilmBinding
 import com.ghozadev.movieapp.ui.detail.videos.VideoAdapter
 import com.ghozadev.movieapp.ui.favorite.FavoriteActivity
-import com.ghozadev.movieapp.ui.movie.MovieAdapter
 import com.ghozadev.movieapp.viewmodel.ViewModelFactory
 import com.ghozadev.movieapp.vo.Status
 import com.google.android.material.snackbar.Snackbar
@@ -42,6 +42,12 @@ class DetailFilmActivity : DaggerAppCompatActivity(), DetailFilmCallback {
 
         setSupportActionBar(activityDetailFilmBinding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        with(detailContentBinding.rvMovieVideo) {
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+            adapter = VideoAdapter(this@DetailFilmActivity)
+        }
 
         viewModel = ViewModelProvider(this@DetailFilmActivity, factory)[DetailFilmViewModel::class.java]
 
@@ -82,9 +88,9 @@ class DetailFilmActivity : DaggerAppCompatActivity(), DetailFilmCallback {
             viewModel.getMovieVideos(filmId).observe(this@DetailFilmActivity, { videoMovies ->
                 if (videoMovies != null) {
                     when (videoMovies.status) {
-                        Status.LOADING -> detailContentBinding.progressBar.visibility = View.VISIBLE
+//                        Status.LOADING -> .progressBar.visibility = View.VISIBLE
                         Status.SUCCESS -> {
-                            detailContentBinding.progressBar.visibility = View.GONE
+//                            detailContentBinding.progressBar.visibility = View.GONE
                             detailContentBinding.rvMovieVideo.adapter?.let { adapter ->
                                 when (adapter) {
                                     is VideoAdapter -> {
@@ -95,7 +101,7 @@ class DetailFilmActivity : DaggerAppCompatActivity(), DetailFilmCallback {
                             }
                         }
                         Status.ERROR -> {
-                            detailContentBinding.progressBar.visibility = View.GONE
+//                            detailContentBinding.progressBar.visibility = View.GONE
                             Toast.makeText(applicationContext, "Error connection to internet", Toast.LENGTH_SHORT).show()
                         }
                     }
